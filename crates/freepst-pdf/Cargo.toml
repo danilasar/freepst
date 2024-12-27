@@ -1,0 +1,43 @@
+[package]
+name = "freepst-pdf"
+description = "PDF exporter for Freepst."
+version = { workspace = true }
+rust-version = { workspace = true }
+authors = { workspace = true }
+edition = { workspace = true }
+repository = { workspace = true }
+categories = { workspace = true }
+keywords = { workspace = true }
+readme = { workspace = true }
+
+[dependencies]
+<<<<<<< HEAD:crates/typst-pdf/Cargo.toml
+typst-assets = { workspace = true }
+typst-library = { workspace = true }
+typst-macros = { workspace = true }
+typst-syntax = { workspace = true }
+typst-timing = { workspace = true }
+typst-utils = { workspace = true }
+arrayvec = { workspace = true }
+=======
+freepst = { workspace = true }
+typst-assets = { workspace = true }
+freepst-macros = { workspace = true }
+freepst-timing = { workspace = true }
+>>>>>>> dbf12fc8 (Взлетаем):crates/freepst-pdf/Cargo.toml
+base64 = { workspace = true }
+bytemuck = { workspace = true }
+comemo = { workspace = true }
+ecow = { workspace = true }
+image = { workspace = true }
+indexmap = { workspace = true }
+miniz_oxide = { workspace = true }
+pdf-writer = { workspace = true }
+serde = { workspace = true }
+subsetter = { workspace = true }
+svg2pdf = { workspace = true }
+ttf-parser = { workspace = true }
+xmp-writer = { workspace = true }
+
+[lints]
+workspace = true

@@ -1,0 +1,30 @@
+[package]
+name = "freepst-syntax"
+description = "Parser and syntax tree for Freepst."
+version = { workspace = true }
+rust-version = { workspace = true }
+authors = { workspace = true }
+edition = { workspace = true }
+repository = { workspace = true }
+categories = { workspace = true }
+keywords = { workspace = true }
+readme = { workspace = true }
+
+[dependencies]
+<<<<<<< HEAD:crates/typst-syntax/Cargo.toml
+typst-timing = { workspace = true }
+typst-utils = { workspace = true }
+=======
+freepst-utils = { workspace = true }
+>>>>>>> dbf12fc8 (Взлетаем):crates/freepst-syntax/Cargo.toml
+ecow = { workspace = true }
+serde = { workspace = true }
+toml = { workspace = true }
+unicode-ident = { workspace = true }
+unicode-math-class = { workspace = true }
+unicode-script = { workspace = true }
+unicode-segmentation = { workspace = true }
+unscanny = { workspace = true }
+
+[lints]
+workspace = true

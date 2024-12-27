@@ -1,0 +1,32 @@
+[package]
+name = "freepst-render"
+description = "Raster image exporter for Freepst."
+version = { workspace = true }
+rust-version = { workspace = true }
+authors = { workspace = true }
+edition = { workspace = true }
+repository = { workspace = true }
+categories = { workspace = true }
+keywords = { workspace = true }
+readme = { workspace = true }
+
+[dependencies]
+<<<<<<< HEAD:crates/typst-render/Cargo.toml
+typst-library = { workspace = true }
+typst-macros = { workspace = true }
+typst-timing = { workspace = true }
+=======
+freepst = { workspace = true }
+freepst-macros = { workspace = true }
+freepst-timing = { workspace = true }
+>>>>>>> dbf12fc8 (Взлетаем):crates/freepst-render/Cargo.toml
+bytemuck = { workspace = true }
+comemo = { workspace = true }
+image = { workspace = true }
+pixglyph = { workspace = true }
+resvg = { workspace = true }
+tiny-skia = { workspace = true }
+ttf-parser = { workspace = true }
+
+[lints]
+workspace = true

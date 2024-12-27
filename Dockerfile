@@ -20,9 +20,9 @@ RUN --mount=type=cache,target=/root/.cargo/git/db \
     --mount=type=cache,target=/root/.cargo/registry/index \
     OPENSSL_NO_PKG_CONFIG=1 OPENSSL_STATIC=1 \
     OPENSSL_DIR=$(xx-info is-cross && echo /$(xx-info)/usr/ || echo /usr) \
-    xx-cargo build -p typst-cli --release && \
-    cp target/$(xx-cargo --print-target-triple)/release/typst target/release/typst && \
-    xx-verify target/release/typst
+    xx-cargo build -p freepst-cli --release && \
+    cp target/$(xx-cargo --print-target-triple)/release/freepst target/release/freepst && \
+    xx-verify target/release/freepst
 
 FROM alpine:latest
 ARG CREATED

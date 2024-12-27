@@ -44,55 +44,55 @@ class TestHelper {
     );
 
     // Triggered when clicking "View" in the lens.
-    this.registerCommand("typst-test-helper.viewFromLens", (name) =>
+    this.registerCommand("freepst-test-helper.viewFromLens", (name) =>
       this.viewFromLens(name)
     );
 
     // Triggered when clicking "Run" in the lens.
-    this.registerCommand("typst-test-helper.runFromLens", (name) =>
+    this.registerCommand("freepst-test-helper.runFromLens", (name) =>
       this.runFromLens(name)
     );
 
     // Triggered when clicking "Save" in the lens.
-    this.registerCommand("typst-test-helper.saveFromLens", (name) =>
+    this.registerCommand("freepst-test-helper.saveFromLens", (name) =>
       this.saveFromLens(name)
     );
 
     // Triggered when clicking "Terminal" in the lens.
-    this.registerCommand("typst-test-helper.runInTerminal", (name) =>
+    this.registerCommand("freepst-test-helper.runInTerminal", (name) =>
       this.runInTerminal(name)
     );
 
     // Triggered when clicking the "Refresh" button in the WebView toolbar.
-    this.registerCommand("typst-test-helper.refreshFromPreview", () =>
+    this.registerCommand("freepst-test-helper.refreshFromPreview", () =>
       this.refreshFromPreview()
     );
 
     // Triggered when clicking the "Run" button in the WebView toolbar.
-    this.registerCommand("typst-test-helper.runFromPreview", () =>
+    this.registerCommand("freepst-test-helper.runFromPreview", () =>
       this.runFromPreview()
     );
 
     // Triggered when clicking the "Save" button in the WebView toolbar.
-    this.registerCommand("typst-test-helper.saveFromPreview", () =>
+    this.registerCommand("freepst-test-helper.saveFromPreview", () =>
       this.saveFromPreview()
     );
 
     // Triggered when clicking the "Increase Resolution" button in the WebView
     // toolbar.
-    this.registerCommand("typst-test-helper.increaseResolution", () =>
+    this.registerCommand("freepst-test-helper.increaseResolution", () =>
       this.adjustResolution(2.0)
     );
 
     // Triggered when clicking the "Decrease Resolution" button in the WebView
     // toolbar.
-    this.registerCommand("typst-test-helper.decreaseResolution", () =>
+    this.registerCommand("freepst-test-helper.decreaseResolution", () =>
       this.adjustResolution(0.5)
     );
 
     // Triggered when performing a right-click on an image in the WebView.
     this.registerCommand(
-      "typst-test-helper.copyImageFilePathFromPreviewContext",
+      "freepst-test-helper.copyImageFilePathFromPreviewContext",
       (e) => this.copyImageFilePathFromPreviewContext(e.webviewSection)
     );
 
@@ -101,7 +101,7 @@ class TestHelper {
     this.context.subscriptions.push(this.statusItem);
 
     // Triggered when clicking on the status item.
-    this.registerCommand("typst-test-helper.showTestProgress", () =>
+    this.registerCommand("freepst-test-helper.showTestProgress", () =>
       this.showTestProgress()
     );
 
@@ -132,25 +132,25 @@ class TestHelper {
         new vscode.CodeLens(line.range, {
           title: "View",
           tooltip: "View the test output and reference in a new tab",
-          command: "typst-test-helper.viewFromLens",
+          command: "freepst-test-helper.viewFromLens",
           arguments: [name],
         }),
         new vscode.CodeLens(line.range, {
           title: "Run",
           tooltip: "Run the test and view the results in a new tab",
-          command: "typst-test-helper.runFromLens",
+          command: "freepst-test-helper.runFromLens",
           arguments: [name],
         }),
         new vscode.CodeLens(line.range, {
           title: "Save",
           tooltip: "Run and view the test and save the reference output",
-          command: "typst-test-helper.saveFromLens",
+          command: "freepst-test-helper.saveFromLens",
           arguments: [name],
         }),
         new vscode.CodeLens(line.range, {
           title: "Terminal",
           tooltip: "Run the test in the integrated terminal",
-          command: "typst-test-helper.runInTerminal",
+          command: "freepst-test-helper.runInTerminal",
           arguments: [name],
         })
       );
@@ -170,7 +170,7 @@ class TestHelper {
       this.opened.panel.title = name;
     } else {
       const panel = vscode.window.createWebviewPanel(
-        "typst-test-helper.preview",
+        "freepst-test-helper.preview",
         name,
         vscode.ViewColumn.Beside,
         { enableFindWidget: true }
@@ -338,7 +338,7 @@ class TestHelper {
     );
     item.tooltip =
       "test-helper rebuilds crates if necessary, so it may take some time.";
-    item.command = "typst-test-helper.showTestProgress";
+    item.command = "freepst-test-helper.showTestProgress";
     return item;
   }
 
@@ -375,7 +375,7 @@ class TestHelper {
   private setRunButtonEnabled(enabled: boolean) {
     vscode.commands.executeCommand(
       "setContext",
-      "typst-test-helper.runButtonEnabled",
+      "freepst-test-helper.runButtonEnabled",
       enabled
     );
   }

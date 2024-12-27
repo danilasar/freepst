@@ -1,0 +1,33 @@
+[package]
+name = "freepst-svg"
+description = "SVG exporter for Freepst."
+version = { workspace = true }
+rust-version = { workspace = true }
+authors = { workspace = true }
+edition = { workspace = true }
+repository = { workspace = true }
+categories = { workspace = true }
+keywords = { workspace = true }
+readme = { workspace = true }
+
+[dependencies]
+<<<<<<< HEAD:crates/typst-svg/Cargo.toml
+typst-library = { workspace = true }
+typst-macros = { workspace = true }
+typst-timing = { workspace = true }
+typst-utils = { workspace = true }
+=======
+freepst = { workspace = true }
+freepst-macros = { workspace = true }
+freepst-timing = { workspace = true }
+>>>>>>> dbf12fc8 (Взлетаем):crates/freepst-svg/Cargo.toml
+base64 = { workspace = true }
+comemo = { workspace = true }
+ecow = { workspace = true }
+flate2 = { workspace = true }
+ttf-parser = { workspace = true }
+xmlparser = { workspace = true }
+xmlwriter = { workspace = true }
+
+[lints]
+workspace = true

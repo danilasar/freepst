@@ -1,0 +1,32 @@
+[package]
+name = "freepst-ide"
+description = "IDE functionality for Freepst."
+version = { workspace = true }
+rust-version = { workspace = true }
+edition = { workspace = true }
+repository = { workspace = true }
+categories = { workspace = true }
+keywords = { workspace = true }
+readme = { workspace = true }
+
+[dependencies]
+<<<<<<< HEAD:crates/typst-ide/Cargo.toml
+typst = { workspace = true }
+typst-eval = { workspace = true }
+=======
+freepst = { workspace = true }
+>>>>>>> dbf12fc8 (Взлетаем):crates/freepst-ide/Cargo.toml
+comemo = { workspace = true }
+ecow = { workspace = true }
+if_chain = { workspace = true }
+pathdiff = { workspace = true }
+serde = { workspace = true }
+unscanny = { workspace = true }
+
+[dev-dependencies]
+typst-assets = { workspace = true, features = ["fonts"] }
+typst-dev-assets = { workspace = true }
+once_cell = { workspace = true }
+
+[lints]
+workspace = true

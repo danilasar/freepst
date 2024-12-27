@@ -1,0 +1,23 @@
+[package]
+name = "freepst-timing"
+description = "Performance timing for Freepst."
+version = { workspace = true }
+rust-version = { workspace = true }
+authors = { workspace = true }
+edition = { workspace = true }
+repository = { workspace = true }
+categories = { workspace = true }
+keywords = { workspace = true }
+readme = { workspace = true }
+
+[dependencies]
+<<<<<<< HEAD:crates/typst-timing/Cargo.toml
+=======
+freepst-syntax = { workspace = true }
+>>>>>>> dbf12fc8 (Взлетаем):crates/freepst-timing/Cargo.toml
+parking_lot = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+[lints]
+workspace = true

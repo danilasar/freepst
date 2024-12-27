@@ -1,0 +1,21 @@
+[package]
+name = "freepst-utils"
+description = "Utilities for Freepst."
+version = { workspace = true }
+rust-version = { workspace = true }
+authors = { workspace = true }
+edition = { workspace = true }
+repository = { workspace = true }
+categories = { workspace = true }
+keywords = { workspace = true }
+readme = { workspace = true }
+
+[dependencies]
+once_cell = { workspace = true }
+portable-atomic = { workspace = true }
+rayon = { workspace = true }
+siphasher = { workspace = true }
+thin-vec = { workspace = true }
+
+[lints]
+workspace = true

@@ -6,7 +6,7 @@ use regex::Regex;
 /// Typst's test runner.
 #[derive(Debug, Clone, Parser)]
 #[command(bin_name = "cargo test --workspace --test tests --")]
-#[clap(name = "typst-test", author)]
+#[clap(name = "freepst-test", author)]
 pub struct CliArguments {
     /// The command to run.
     #[command(subcommand)]

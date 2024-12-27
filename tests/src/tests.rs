@@ -134,7 +134,7 @@ fn test() {
         //
         // We use `par_bridge` instead of `par_iter` because the former
         // results in a stack overflow during PDF export. Probably related
-        // to `typst::utils::Deferred` yielding.
+        // to `freepst::utils::Deferred` yielding.
         tests.iter().par_bridge().for_each(|test| {
             logger.lock().start(test);
             let result = std::panic::catch_unwind(|| runner(test));

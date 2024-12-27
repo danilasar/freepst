@@ -76,7 +76,7 @@ struct Contributor {
     contributions: usize,
 }
 
-/// A commit on the `typst` repository.
+/// A commit on the `freepst` repository.
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Commit {
     author: Author,

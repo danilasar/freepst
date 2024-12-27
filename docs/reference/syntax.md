@@ -193,7 +193,7 @@ If you want to set a specific folder as the root of your project, you can use
 the CLI's `--root` flag. Make sure that the main file is contained in the
 folder's subtree!
 ```bash
-typst compile --root .. file.typ
+freepst compile --root .. file.typ
 ```
 
 In the web app, the project itself is the root directory. You can always read

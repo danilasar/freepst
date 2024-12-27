@@ -813,6 +813,320 @@ dependencies = [
 ]
 
 [[package]]
+name = "freepst"
+version = "0.12.0"
+dependencies = [
+ "arrayvec",
+ "az",
+ "bitflags 2.6.0",
+ "bumpalo",
+ "chinese-number",
+ "ciborium",
+ "comemo",
+ "csv",
+ "ecow",
+ "flate2",
+ "fontdb",
+ "freepst-macros",
+ "freepst-syntax",
+ "freepst-timing",
+ "freepst-utils",
+ "hayagriva",
+ "hypher",
+ "icu_properties",
+ "icu_provider",
+ "icu_provider_adapters",
+ "icu_provider_blob",
+ "icu_segmenter",
+ "if_chain",
+ "image",
+ "indexmap 2.6.0",
+ "kamadak-exif",
+ "kurbo",
+ "lipsum",
+ "log",
+ "once_cell",
+ "palette",
+ "phf",
+ "png",
+ "portable-atomic",
+ "qcms",
+ "rayon",
+ "regex",
+ "roxmltree",
+ "rust_decimal",
+ "rustybuzz",
+ "serde",
+ "serde_json",
+ "serde_yaml 0.9.34+deprecated",
+ "siphasher 1.0.1",
+ "smallvec",
+ "stacker",
+ "syntect",
+ "time",
+ "toml",
+ "ttf-parser",
+ "two-face",
+ "typed-arena",
+ "typst-assets",
+ "typst-dev-assets",
+ "unicode-bidi",
+ "unicode-math-class",
+ "unicode-script",
+ "unicode-segmentation",
+ "unscanny",
+ "usvg",
+ "wasmi",
+ "xmlwriter",
+]
+
+[[package]]
+name = "freepst-cli"
+version = "0.12.0"
+dependencies = [
+ "chrono",
+ "clap",
+ "clap_complete",
+ "clap_mangen",
+ "codespan-reporting",
+ "color-print",
+ "comemo",
+ "dirs",
+ "ecow",
+ "freepst",
+ "freepst-kit",
+ "freepst-macros",
+ "freepst-pdf",
+ "freepst-render",
+ "freepst-svg",
+ "freepst-timing",
+ "fs_extra",
+ "native-tls",
+ "notify",
+ "once_cell",
+ "open",
+ "parking_lot",
+ "pathdiff",
+ "rayon",
+ "same-file",
+ "self-replace",
+ "semver",
+ "serde",
+ "serde_json",
+ "serde_yaml 0.9.34+deprecated",
+ "shell-escape",
+ "tar",
+ "tempfile",
+ "toml",
+ "typst-assets",
+ "ureq",
+ "xz2",
+ "zip",
+]
+
+[[package]]
+name = "freepst-docs"
+version = "0.12.0"
+dependencies = [
+ "clap",
+ "comemo",
+ "ecow",
+ "freepst",
+ "freepst-render",
+ "heck",
+ "once_cell",
+ "pulldown-cmark",
+ "serde",
+ "serde_json",
+ "serde_yaml 0.9.34+deprecated",
+ "syntect",
+ "typed-arena",
+ "typst-assets",
+ "typst-dev-assets",
+ "unscanny",
+ "yaml-front-matter",
+]
+
+[[package]]
+name = "freepst-fuzz"
+version = "0.12.0"
+dependencies = [
+ "comemo",
+ "freepst",
+ "freepst-render",
+ "freepst-syntax",
+ "libfuzzer-sys",
+ "typst-assets",
+]
+
+[[package]]
+name = "freepst-ide"
+version = "0.12.0"
+dependencies = [
+ "comemo",
+ "ecow",
+ "freepst",
+ "if_chain",
+ "log",
+ "once_cell",
+ "serde",
+ "typst-assets",
+ "typst-dev-assets",
+ "unscanny",
+]
+
+[[package]]
+name = "freepst-kit"
+version = "0.12.0"
+dependencies = [
+ "dirs",
+ "ecow",
+ "env_proxy",
+ "flate2",
+ "fontdb",
+ "freepst",
+ "freepst-timing",
+ "freepst-utils",
+ "native-tls",
+ "once_cell",
+ "openssl",
+ "tar",
+ "typst-assets",
+ "ureq",
+]
+
+[[package]]
+name = "freepst-macros"
+version = "0.12.0"
+dependencies = [
+ "heck",
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
+name = "freepst-pdf"
+version = "0.12.0"
+dependencies = [
+ "arrayvec",
+ "base64",
+ "bytemuck",
+ "comemo",
+ "ecow",
+ "freepst",
+ "freepst-macros",
+ "freepst-timing",
+ "image",
+ "indexmap 2.6.0",
+ "miniz_oxide",
+ "once_cell",
+ "pdf-writer",
+ "serde",
+ "subsetter",
+ "svg2pdf",
+ "ttf-parser",
+ "typst-assets",
+ "unscanny",
+ "xmp-writer",
+]
+
+[[package]]
+name = "freepst-render"
+version = "0.12.0"
+dependencies = [
+ "bytemuck",
+ "comemo",
+ "freepst",
+ "freepst-macros",
+ "freepst-timing",
+ "image",
+ "pixglyph",
+ "resvg",
+ "roxmltree",
+ "tiny-skia",
+ "ttf-parser",
+ "usvg",
+]
+
+[[package]]
+name = "freepst-svg"
+version = "0.12.0"
+dependencies = [
+ "base64",
+ "comemo",
+ "ecow",
+ "flate2",
+ "freepst",
+ "freepst-macros",
+ "freepst-timing",
+ "ttf-parser",
+ "xmlparser",
+ "xmlwriter",
+]
+
+[[package]]
+name = "freepst-syntax"
+version = "0.12.0"
+dependencies = [
+ "ecow",
+ "freepst-utils",
+ "once_cell",
+ "serde",
+ "toml",
+ "unicode-ident",
+ "unicode-math-class",
+ "unicode-script",
+ "unicode-segmentation",
+ "unscanny",
+]
+
+[[package]]
+name = "freepst-tests"
+version = "0.12.0"
+dependencies = [
+ "clap",
+ "comemo",
+ "ecow",
+ "freepst",
+ "freepst-pdf",
+ "freepst-render",
+ "freepst-svg",
+ "once_cell",
+ "oxipng",
+ "parking_lot",
+ "rayon",
+ "regex",
+ "tiny-skia",
+ "ttf-parser",
+ "typst-assets",
+ "typst-dev-assets",
+ "unscanny",
+ "walkdir",
+]
+
+[[package]]
+name = "freepst-timing"
+version = "0.12.0"
+dependencies = [
+ "freepst-syntax",
+ "parking_lot",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "freepst-utils"
+version = "0.12.0"
+dependencies = [
+ "once_cell",
+ "portable-atomic",
+ "rayon",
+ "siphasher 1.0.1",
+ "thin-vec",
+]
+
+[[package]]
 name = "fs_extra"
 version = "1.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2697,6 +3011,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6af6ae20167a9ece4bcb41af5b80f8a1f1df981f6391189ce00fd257af04126a"
 
 [[package]]
+<<<<<<< HEAD
 name = "typst"
 version = "0.12.0"
 dependencies = [
@@ -2714,11 +3029,14 @@ dependencies = [
 ]
 
 [[package]]
+=======
+>>>>>>> dbf12fc8 (Взлетаем)
 name = "typst-assets"
 version = "0.12.0"
 source = "git+https://github.com/typst/typst-assets?rev=8cccef9#8cccef93b5da73a1c80389722cf2b655b624f577"
 
 [[package]]
+<<<<<<< HEAD
 name = "typst-cli"
 version = "0.12.0"
 dependencies = [
@@ -2764,11 +3082,14 @@ dependencies = [
 ]
 
 [[package]]
+=======
+>>>>>>> dbf12fc8 (Взлетаем)
 name = "typst-dev-assets"
 version = "0.12.0"
 source = "git+https://github.com/typst/typst-dev-assets?rev=b07d156#b07d1560143d6883887358d30edb25cb12fcf5b9"
 
 [[package]]
+<<<<<<< HEAD
 name = "typst-docs"
 version = "0.12.0"
 dependencies = [
@@ -3107,6 +3428,8 @@ dependencies = [
 ]
 
 [[package]]
+=======
+>>>>>>> dbf12fc8 (Взлетаем)
 name = "unic-langid"
 version = "0.9.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"

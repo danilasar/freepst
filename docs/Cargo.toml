@@ -1,5 +1,5 @@
 [package]
-name = "typst-docs"
+name = "freepst-docs"
 version = { workspace = true }
 rust-version = { workspace = true }
 authors = { workspace = true }
@@ -7,16 +7,17 @@ edition = { workspace = true }
 publish = false
 
 [[bin]]
-name = "typst-docs"
+name = "freepst-docs"
 required-features = ["cli"]
 doc = false
 
 [features]
 default = ["cli"]
-cli = ["clap", "typst-render", "serde_json"]
+cli = ["clap", "freepst-render", "serde_json"]
 
 [dependencies]
-typst = { workspace = true }
+freepst = { workspace = true }
+freepst-render = { workspace = true, optional = true }
 typst-assets = { workspace = true, features = ["fonts"] }
 typst-dev-assets = { workspace = true }
 clap = { workspace = true, optional = true }

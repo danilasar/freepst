@@ -135,10 +135,10 @@ Typst's CLI is available from different sources:
 Once you have installed Typst, you can use it like this:
 ```sh
 # Creates `file.pdf` in working directory.
-typst compile file.typ
+freepst compile file.typ
 
 # Creates PDF file at the desired path.
-typst compile path/to/source.typ path/to/output.pdf
+freepst compile path/to/source.typ path/to/output.pdf
 ```
 
 You can also watch source files and automatically recompile on changes. This is
@@ -146,29 +146,29 @@ faster than compiling from scratch each time because Typst has incremental
 compilation.
 ```sh
 # Watches source files and recompiles on changes.
-typst watch file.typ
+freepst watch file.typ
 ```
 
 Typst further allows you to add custom font paths for your project and list all
 of the fonts it discovered:
 ```sh
 # Adds additional directories to search for fonts.
-typst compile --font-path path/to/fonts file.typ
+freepst compile --font-path path/to/fonts file.typ
 
 # Lists all of the discovered fonts in the system and the given directory.
-typst fonts --font-path path/to/fonts
+freepst fonts --font-path path/to/fonts
 
 # Or via environment variable (Linux syntax).
-TYPST_FONT_PATHS=path/to/fonts typst fonts
+TYPST_FONT_PATHS=path/to/fonts freepst fonts
 ```
 
 For other CLI subcommands and options, see below:
 ```sh
 # Prints available subcommands and options.
-typst help
+freepst help
 
 # Prints detailed usage of a subcommand.
-typst help watch
+freepst help watch
 ```
 
 If you prefer an integrated IDE-like experience with autocompletion and instant
@@ -198,7 +198,7 @@ CLI with the following commands:
 
 ```sh
 git clone https://github.com/typst/typst
-cd typst
+cd freepst
 cargo build --release
 ```
 
