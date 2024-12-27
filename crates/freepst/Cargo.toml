@@ -11,29 +11,15 @@ repository = { workspace = true }
 readme = { workspace = true }
 
 [dependencies]
-<<<<<<< HEAD:crates/typst/Cargo.toml
 typst-eval = { workspace = true }
 typst-html = { workspace = true }
 typst-layout = { workspace = true }
 typst-library = { workspace = true }
-typst-macros = { workspace = true }
-typst-realize = { workspace = true }
-typst-syntax = { workspace = true }
-typst-timing = { workspace = true }
-typst-utils = { workspace = true }
-=======
-typst-assets = { workspace = true }
 freepst-macros = { workspace = true }
+typst-realize = { workspace = true }
 freepst-syntax = { workspace = true }
 freepst-timing = { workspace = true }
 freepst-utils = { workspace = true }
-arrayvec = { workspace = true }
-az = { workspace = true }
-bitflags = { workspace = true }
-bumpalo = { workspace = true }
-chinese-number = { workspace = true }
-ciborium = { workspace = true }
->>>>>>> dbf12fc8 (Взлетаем):crates/freepst/Cargo.toml
 comemo = { workspace = true }
 ecow = { workspace = true }
 
