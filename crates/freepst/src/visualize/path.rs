@@ -99,7 +99,7 @@ impl Show for Packed<PathElem> {
 }
 
 /// Layout the path.
-#[typst_macros::time(span = elem.span())]
+#[freepst_macros::time(span = elem.span())]
 fn layout_path(
     elem: &Packed<PathElem>,
     _: &mut Engine,

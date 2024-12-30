@@ -9,22 +9,22 @@ Let's start with a broad overview of the directories in this repository:
 
 - `crates/typst`: The main compiler crate which defines the complete language
   and library.
-- `crates/typst-cli`: Typst's command line interface. This is a relatively small
+- `crates/freepst-cli`: Typst's command line interface. This is a relatively small
   layer on top of the compiler and the exporters.
-- `crates/typst-eval`: The interpreter for the Typst language.
-- `crates/typst-ide`: Exposes IDE functionality.
-- `crates/typst-kit`: Contains various default implementation of
-  functionality used in `typst-cli`.
-- `crates/typst-layout`: Typst's layout engine.
-- `crates/typst-library`: Typst's standard library.
-- `crates/typst-macros`: Procedural macros for the compiler.
-- `crates/typst-pdf`: The PDF exporter.
-- `crates/typst-realize`: Typst's realization subsystem.
-- `crates/typst-render`: A renderer for Typst frames.
-- `crates/typst-svg`: The SVG exporter.
-- `crates/typst-syntax`: Home to the parser and syntax tree definition.
-- `crates/typst-timing`: Performance timing for Typst.
-- `crates/typst-utils`: Utilities for Typst.
+- `crates/freepst-eval`: The interpreter for the Typst language.
+- `crates/freepst-ide`: Exposes IDE functionality.
+- `crates/freepst-kit`: Contains various default implementation of
+  functionality used in `freepst-cli`.
+- `crates/freepst-layout`: Typst's layout engine.
+- `crates/freepst-library`: Typst's standard library.
+- `crates/freepst-macros`: Procedural macros for the compiler.
+- `crates/freepst-pdf`: The PDF exporter.
+- `crates/freepst-realize`: Typst's realization subsystem.
+- `crates/freepst-render`: A renderer for Typst frames.
+- `crates/freepst-svg`: The SVG exporter.
+- `crates/freepst-syntax`: Home to the parser and syntax tree definition.
+- `crates/freepst-timing`: Performance timing for Typst.
+- `crates/freepst-utils`: Utilities for Typst.
 - `docs`: Generates the content of the official
   [documentation][docs] from markdown files and the inline
   Rust documentation. Only generates the content and structure, not the concrete
@@ -50,7 +50,7 @@ them.
 
 
 ## Parsing
-The syntax tree and parser are located in `crates/typst-syntax`. Parsing is
+The syntax tree and parser are located in `crates/freepst-syntax`. Parsing is
 a pure function `&str -> SyntaxNode` without any further dependencies. The
 result is a concrete syntax tree reflecting the whole file structure, including
 whitespace and comments. Parsing cannot fail. If there are syntactic errors, the
@@ -62,7 +62,7 @@ highlighting and IDE functionality.
 The syntax tree is untyped, any node can have any `SyntaxKind`. This makes it
 very easy to (a) attach spans to each node (see below), (b) traverse the tree
 when doing highlighting or IDE analyses (no extra complications like a visitor
-pattern). The `typst::syntax::ast` module provides a typed API on top of
+pattern). The `freepst::syntax::ast` module provides a typed API on top of
 the raw tree. This API resembles a more classical AST and is used by the
 interpreter.
 
@@ -158,7 +158,7 @@ format.
 
 
 ## IDE
-The `crates/typst-ide` crate implements IDE functionality for Typst. It
+The `crates/freepst-ide` crate implements IDE functionality for Typst. It
 builds heavily on the other modules (most importantly, `syntax` and `eval`).
 
 **Syntactic:**

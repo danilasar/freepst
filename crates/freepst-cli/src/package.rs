@@ -1,4 +1,4 @@
-use typst_kit::package::PackageStorage;
+use freepst_kit::package::PackageStorage;
 
 use crate::args::PackageArgs;
 use crate::download;

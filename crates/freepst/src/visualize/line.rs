@@ -68,7 +68,7 @@ impl Show for Packed<LineElem> {
 }
 
 /// Layout the line.
-#[typst_macros::time(span = elem.span())]
+#[freepst_macros::time(span = elem.span())]
 fn layout_line(
     elem: &Packed<LineElem>,
     _: &mut Engine,

@@ -5,8 +5,8 @@ use std::time::{Duration, Instant};
 
 use codespan_reporting::term;
 use codespan_reporting::term::termcolor::WriteColor;
-use typst::utils::format_duration;
-use typst_kit::download::{DownloadState, Downloader, Progress};
+use freepst::utils::format_duration;
+use freepst_kit::download::{DownloadState, Downloader, Progress};
 
 use crate::terminal::{self, TermOut};
 use crate::ARGS;

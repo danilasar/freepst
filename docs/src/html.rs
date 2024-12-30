@@ -6,13 +6,13 @@ use heck::{ToKebabCase, ToTitleCase};
 use pulldown_cmark as md;
 use serde::{Deserialize, Serialize};
 use typed_arena::Arena;
-use typst::diag::{FileError, FileResult, StrResult};
-use typst::foundations::{Bytes, Datetime};
-use typst::layout::{Abs, PagedDocument, Point, Size};
-use typst::syntax::{FileId, Source, VirtualPath};
-use typst::text::{Font, FontBook};
-use typst::utils::LazyHash;
-use typst::{Library, World};
+use freepst::diag::{FileError, FileResult, StrResult};
+use freepst::foundations::{Bytes, Datetime};
+use freepst::layout::{Abs, PagedDocument, Point, Size};
+use freepst::syntax::{FileId, Source, VirtualPath};
+use freepst::text::{Font, FontBook};
+use freepst::utils::LazyHash;
+use freepst::{Library, World};
 use unscanny::Scanner;
 use yaml_front_matter::YamlFrontMatter;
 
@@ -245,13 +245,13 @@ impl<'a> Handler<'a> {
             md::Event::Code(code) => {
                 let mut chars = code.chars();
                 let parser = match (chars.next(), chars.next_back()) {
-                    (Some('['), Some(']')) => typst::syntax::parse,
-                    (Some('{'), Some('}')) => typst::syntax::parse_code,
+                    (Some('['), Some(']')) => freepst::syntax::parse,
+                    (Some('{'), Some('}')) => freepst::syntax::parse_code,
                     _ => return true,
                 };
 
                 let root = parser(&code[1..code.len() - 1]);
-                let html = typst::syntax::highlight_html(&root);
+                let html = freepst::syntax::highlight_html(&root);
                 *event = md::Event::Html(html.into());
             }
 
@@ -282,7 +282,7 @@ impl<'a> Handler<'a> {
     }
 
     fn handle_image(&self, link: &str) -> String {
-        if let Some(data) = typst_dev_assets::get_by_name(link) {
+        if let Some(data) = freepst_dev_assets::get_by_name(link) {
             self.resolver.image(link, data)
         } else if let Some(url) = self.resolver.link(link) {
             url
@@ -393,13 +393,13 @@ fn code_block(resolver: &dyn Resolver, lang: &str, text: &str) -> Html {
         buf.push_str("</pre>");
         return Html::new(buf);
     } else if !matches!(lang, "example" | "typ" | "preview") {
-        let set = &*typst::text::RAW_SYNTAXES;
+        let set = &*freepst::text::RAW_SYNTAXES;
         let buf = syntect::html::highlighted_html_for_string(
             &display,
             set,
             set.find_syntax_by_token(lang)
                 .unwrap_or_else(|| panic!("unsupported highlighting language: {lang}")),
-            &typst::text::RAW_THEME,
+            &freepst::text::RAW_THEME,
         )
         .expect("failed to highlight code");
         return Html::new(buf);
@@ -407,8 +407,8 @@ fn code_block(resolver: &dyn Resolver, lang: &str, text: &str) -> Html {
 
     let mut highlighted = None;
     if matches!(lang, "example" | "typ") {
-        let root = typst::syntax::parse(&display);
-        let html = Html::new(typst::syntax::highlight_html(&root));
+        let root = freepst::syntax::parse(&display);
+        let html = Html::new(freepst::syntax::highlight_html(&root));
         if lang == "typ" {
             return Html::new(format!("<pre>{}</pre>", html.as_str()));
         }
@@ -419,7 +419,7 @@ fn code_block(resolver: &dyn Resolver, lang: &str, text: &str) -> Html {
     let source = Source::new(id, compile);
     let world = DocWorld(source);
 
-    let mut document = match typst::compile::<PagedDocument>(&world).output {
+    let mut document = match freepst::compile::<PagedDocument>(&world).output {
         Ok(doc) => doc,
         Err(err) => {
             let msg = &err[0].message;
@@ -436,7 +436,7 @@ fn code_block(resolver: &dyn Resolver, lang: &str, text: &str) -> Html {
         document.pages.truncate(1);
     }
 
-    let hash = typst::utils::hash128(&(lang, text));
+    let hash = freepst::utils::hash128(&(lang, text));
     resolver.example(hash, highlighted, &document)
 }
 
@@ -487,7 +487,7 @@ impl World for DocWorld {
     fn file(&self, id: FileId) -> FileResult<Bytes> {
         assert!(id.package().is_none());
         Ok(Bytes::from_static(
-            typst_dev_assets::get_by_name(
+            freepst_dev_assets::get_by_name(
                 &id.vpath().as_rootless_path().to_string_lossy(),
             )
             .unwrap_or_else(|| panic!("failed to load {:?}", id.vpath())),

@@ -67,7 +67,7 @@ pub struct CliArguments {
     /// the test suite.
     ///
     /// If `cargo test` is run with `--no-default-features`, then compiling will
-    /// not include Typst's core crates, only typst-syntax, greatly speeding up
+    /// not include Typst's core crates, only freepst-syntax, greatly speeding up
     /// debugging when changing the parser.
     ///
     /// You can generate a correct reference directory by running on a known

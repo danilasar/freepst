@@ -2,10 +2,10 @@ use std::f32::consts::TAU;
 
 use ecow::{eco_format, EcoString};
 use ttf_parser::OutlineBuilder;
-use typst_library::foundations::Repr;
-use typst_library::layout::{Angle, Axes, Frame, Quadrant, Ratio, Size, Transform};
-use typst_library::visualize::{Color, FillRule, Gradient, Paint, RatioOrAngle, Tiling};
-use typst_utils::hash128;
+use freepst_library::foundations::Repr;
+use freepst_library::layout::{Angle, Axes, Frame, Quadrant, Ratio, Size, Transform};
+use freepst_library::visualize::{Color, FillRule, Gradient, Paint, RatioOrAngle, Tiling};
+use freepst_utils::hash128;
 use xmlwriter::XmlWriter;
 
 use crate::{Id, SVGRenderer, State, SvgMatrix, SvgPathBuilder};

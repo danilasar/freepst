@@ -9,15 +9,15 @@ use codespan_reporting::term;
 use ecow::{eco_format, EcoString};
 use parking_lot::RwLock;
 use rayon::iter::{IntoParallelRefIterator, ParallelIterator};
-use typst::diag::{
+use freepst::diag::{
     bail, At, Severity, SourceDiagnostic, SourceResult, StrResult, Warned,
 };
-use typst::foundations::{Datetime, Smart};
-use typst::html::HtmlDocument;
-use typst::layout::{Frame, Page, PageRanges, PagedDocument};
-use typst::syntax::{FileId, Source, Span};
-use typst::WorldExt;
-use typst_pdf::{PdfOptions, PdfStandards, Timestamp};
+use freepst::foundations::{Datetime, Smart};
+use freepst::html::HtmlDocument;
+use freepst::layout::{Frame, Page, PageRanges, PagedDocument};
+use freepst::syntax::{FileId, Source, Span};
+use freepst::WorldExt;
+use freepst_pdf::{PdfOptions, PdfStandards, Timestamp};
 
 use crate::args::{
     CompileArgs, CompileCommand, DiagnosticFormat, Input, Output, OutputFormat,
@@ -134,8 +134,8 @@ impl CompileConfig {
                 .pdf_standard
                 .iter()
                 .map(|standard| match standard {
-                    PdfStandard::V_1_7 => typst_pdf::PdfStandard::V_1_7,
-                    PdfStandard::A_2b => typst_pdf::PdfStandard::A_2b,
+                    PdfStandard::V_1_7 => freepst_pdf::PdfStandard::V_1_7,
+                    PdfStandard::A_2b => freepst_pdf::PdfStandard::A_2b,
                 })
                 .collect::<Vec<_>>();
             PdfStandards::new(&list)?
@@ -173,7 +173,7 @@ impl CompileConfig {
 /// Compile a single time.
 ///
 /// Returns whether it compiled without errors.
-#[typst_macros::time(name = "compile once")]
+#[freepst_macros::time(name = "compile once")]
 pub fn compile_once(
     world: &mut SystemWorld,
     config: &mut CompileConfig,
@@ -228,12 +228,12 @@ fn compile_and_export(
 ) -> Warned<SourceResult<()>> {
     match config.output_format {
         OutputFormat::Html => {
-            let Warned { output, warnings } = typst::compile::<HtmlDocument>(world);
+            let Warned { output, warnings } = freepst::compile::<HtmlDocument>(world);
             let result = output.and_then(|document| export_html(&document, config));
             Warned { output: result, warnings }
         }
         _ => {
-            let Warned { output, warnings } = typst::compile::<PagedDocument>(world);
+            let Warned { output, warnings } = freepst::compile::<PagedDocument>(world);
             let result = output.and_then(|document| export_paged(&document, config));
             Warned { output: result, warnings }
         }
@@ -242,7 +242,7 @@ fn compile_and_export(
 
 /// Export to HTML.
 fn export_html(document: &HtmlDocument, config: &CompileConfig) -> SourceResult<()> {
-    let html = typst_html::html(document)?;
+    let html = freepst_html::html(document)?;
     let result = config.output.write(html.as_bytes());
 
     #[cfg(feature = "http-server")]
@@ -291,7 +291,7 @@ fn export_pdf(document: &PagedDocument, config: &CompileConfig) -> SourceResult<
         page_ranges: config.pages.clone(),
         standards: config.pdf_standards.clone(),
     };
-    let buffer = typst_pdf::pdf(document, &options)?;
+    let buffer = freepst_pdf::pdf(document, &options)?;
     config
         .output
         .write(&buffer)
@@ -436,7 +436,7 @@ fn export_image_page(
 ) -> StrResult<()> {
     match fmt {
         ImageExportFormat::Png => {
-            let pixmap = typst_render::render(page, config.ppi / 72.0);
+            let pixmap = freepst_render::render(page, config.ppi / 72.0);
             let buf = pixmap
                 .encode_png()
                 .map_err(|err| eco_format!("failed to encode PNG file ({err})"))?;
@@ -445,7 +445,7 @@ fn export_image_page(
                 .map_err(|err| eco_format!("failed to write PNG file ({err})"))?;
         }
         ImageExportFormat::Svg => {
-            let svg = typst_svg::svg(page);
+            let svg = freepst_svg::svg(page);
             output
                 .write(svg.as_bytes())
                 .map_err(|err| eco_format!("failed to write SVG file ({err})"))?;
@@ -485,7 +485,7 @@ impl ExportCache {
     /// Returns true if the entry is cached and appends the new hash to the
     /// cache (for the next compilation).
     pub fn is_cached(&self, i: usize, frame: &Frame) -> bool {
-        let hash = typst::utils::hash128(frame);
+        let hash = freepst::utils::hash128(frame);
 
         let mut cache = self.cache.upgradable_read();
         if i >= cache.len() {

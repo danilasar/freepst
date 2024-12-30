@@ -119,9 +119,9 @@ Typst's CLI is available from different sources:
 
 - If you have a [Rust][rust] toolchain installed, you can install
   - the latest released Typst version with
-    `cargo install --locked typst-cli`
+    `cargo install --locked freepst-cli`
   - a development version with
-    `cargo install --git https://github.com/typst/typst --locked typst-cli`
+    `cargo install --git https://github.com/typst/typst --locked freepst-cli`
 
 - Nix users can
   - use the `typst` package with `nix-shell -p typst`

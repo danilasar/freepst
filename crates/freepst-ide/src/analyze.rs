@@ -1,9 +1,9 @@
 use comemo::Track;
 use ecow::{eco_vec, EcoString, EcoVec};
-use typst::foundations::{Label, Styles, Value};
-use typst::layout::PagedDocument;
-use typst::model::BibliographyElem;
-use typst::syntax::{ast, LinkedNode, SyntaxKind};
+use freepst::foundations::{Label, Styles, Value};
+use freepst::layout::PagedDocument;
+use freepst::model::BibliographyElem;
+use freepst::syntax::{ast, LinkedNode, SyntaxKind};
 
 use crate::IdeWorld;
 
@@ -37,7 +37,7 @@ pub fn analyze_expr(
                 }
             }
 
-            return typst::trace::<PagedDocument>(world.upcast(), node.span());
+            return freepst::trace::<PagedDocument>(world.upcast(), node.span());
         }
     };
 
@@ -56,7 +56,7 @@ pub fn analyze_import(world: &dyn IdeWorld, source: &LinkedNode) -> Option<Value
     let Value::Str(path) = source else { return None };
 
     crate::utils::with_engine(world, |engine| {
-        typst_eval::import(engine, &path, source_span).ok().map(Value::Module)
+        freepst_eval::import(engine, &path, source_span).ok().map(Value::Module)
     })
 }
 

@@ -129,7 +129,7 @@ pub struct BoxElem {
 
 impl Packed<BoxElem> {
     /// Layout this box as part of a paragraph.
-    #[typst_macros::time(name = "box", span = self.span())]
+    #[freepst_macros::time(name = "box", span = self.span())]
     pub fn layout(
         &self,
         engine: &mut Engine,
@@ -481,7 +481,7 @@ impl BlockElem {
 
 impl Packed<BlockElem> {
     /// Lay this out as an unbreakable block.
-    #[typst_macros::time(name = "block", span = self.span())]
+    #[freepst_macros::time(name = "block", span = self.span())]
     pub fn layout_single(
         &self,
         engine: &mut Engine,
@@ -571,7 +571,7 @@ impl Packed<BlockElem> {
 
 impl Packed<BlockElem> {
     /// Lay this out as a breakable block.
-    #[typst_macros::time(name = "block", span = self.span())]
+    #[freepst_macros::time(name = "block", span = self.span())]
     pub fn layout_multiple(
         &self,
         engine: &mut Engine,

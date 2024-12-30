@@ -634,7 +634,7 @@ fn create_native_elem_impl(element: &Elem) -> TokenStream {
     let Elem { name, ident, title, scope, keywords, docs, .. } = element;
 
     let local_name = if element.can("LocalName") {
-        quote! { Some(<#foundations::Packed<#ident> as ::typst_library::text::LocalName>::local_name) }
+        quote! { Some(<#foundations::Packed<#ident> as ::freepst_library::text::LocalName>::local_name) }
     } else {
         quote! { None }
     };
@@ -763,9 +763,9 @@ fn create_construct_impl(element: &Elem) -> TokenStream {
     quote! {
         impl #foundations::Construct for #ident {
             fn construct(
-                engine: &mut ::typst_library::engine::Engine,
+                engine: &mut ::freepst_library::engine::Engine,
                 args: &mut #foundations::Args,
-            ) -> ::typst_library::diag::SourceResult<#foundations::Content> {
+            ) -> ::freepst_library::diag::SourceResult<#foundations::Content> {
                 #(#setup)*
                 Ok(#foundations::Content::new(Self { #(#fields),* }))
             }
@@ -790,9 +790,9 @@ fn create_set_impl(element: &Elem) -> TokenStream {
     quote! {
         impl #foundations::Set for #ident {
             fn set(
-                engine: &mut ::typst_library::engine::Engine,
+                engine: &mut ::freepst_library::engine::Engine,
                 args: &mut #foundations::Args,
-            ) -> ::typst_library::diag::SourceResult<#foundations::Styles> {
+            ) -> ::freepst_library::diag::SourceResult<#foundations::Styles> {
                 let mut styles = #foundations::Styles::new();
                 #(#handlers)*
                 Ok(styles)
@@ -839,7 +839,7 @@ fn create_capable_impl(element: &Elem) -> TokenStream {
                 // Safety: The vtable function doesn't require initialized
                 // data, so it's fine to use a dangling pointer.
                 return Some(unsafe {
-                    ::typst_utils::fat::vtable(dangling as *const dyn #capability)
+                    ::freepst_utils::fat::vtable(dangling as *const dyn #capability)
                 });
             }
         }
@@ -1049,13 +1049,13 @@ fn create_repr_impl(element: &Elem) -> TokenStream {
 /// Creates the element's `Locatable` implementation.
 fn create_locatable_impl(element: &Elem) -> TokenStream {
     let ident = &element.ident;
-    quote! { impl ::typst_library::introspection::Locatable for #foundations::Packed<#ident> {} }
+    quote! { impl ::freepst_library::introspection::Locatable for #foundations::Packed<#ident> {} }
 }
 
 /// Creates the element's `Mathy` implementation.
 fn create_mathy_impl(element: &Elem) -> TokenStream {
     let ident = &element.ident;
-    quote! { impl ::typst_library::math::Mathy for #foundations::Packed<#ident> {} }
+    quote! { impl ::freepst_library::math::Mathy for #foundations::Packed<#ident> {} }
 }
 
 /// Creates the element's `IntoValue` implementation.

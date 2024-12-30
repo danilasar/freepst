@@ -1,8 +1,8 @@
 use std::sync::Arc;
 
 use tiny_skia as sk;
-use typst_library::layout::{Axes, Point, Ratio, Size};
-use typst_library::visualize::{Color, Gradient, Paint, RelativeTo, Tiling};
+use freepst_library::layout::{Axes, Point, Ratio, Size};
+use freepst_library::visualize::{Color, Gradient, Paint, RelativeTo, Tiling};
 
 use crate::{AbsExt, State};
 

@@ -1,4 +1,4 @@
-# typst-syntax
+# freepst-syntax
 
 Welcome to the Typst Syntax crate! This crate manages the syntactical structure
 of Typst by holding some core abstractions like assigning source file ids,

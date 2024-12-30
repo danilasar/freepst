@@ -37,7 +37,7 @@ const AFTER_HELP: &str = color_print::cstr!("\
 #[derive(Debug, Clone, Parser)]
 #[clap(
     name = "freepst",
-    version = crate::typst_version(),
+    version = crate::freepst_version(),
     author,
     help_template = HELP_TEMPLATE,
     after_help = AFTER_HELP,
@@ -574,7 +574,6 @@ fn parse_sys_input_pair(raw: &str) -> Result<(String, String), String> {
     Ok((key, val))
 }
 
-<<<<<<< HEAD:crates/typst-cli/src/args.rs
 /// Parses a UNIX timestamp according to <https://reproducible-builds.org/specs/source-date-epoch/>
 fn parse_source_date_epoch(raw: &str) -> Result<DateTime<Utc>, String> {
     let timestamp: i64 = raw
@@ -582,145 +581,4 @@ fn parse_source_date_epoch(raw: &str) -> Result<DateTime<Utc>, String> {
         .map_err(|err| format!("timestamp must be decimal integer ({err})"))?;
     DateTime::from_timestamp(timestamp, 0)
         .ok_or_else(|| "timestamp out of range".to_string())
-=======
-/// Implements parsing of page ranges (`1-3`, `4`, `5-`, `-2`), used by the
-/// `CompileCommand.pages` argument, through the `FromStr` trait instead of
-/// a value parser, in order to generate better errors.
-///
-/// See also: https://github.com/clap-rs/clap/issues/5065
-#[derive(Debug, Clone)]
-pub struct PageRangeArgument(RangeInclusive<Option<NonZeroUsize>>);
-
-impl PageRangeArgument {
-    pub fn to_range(&self) -> RangeInclusive<Option<NonZeroUsize>> {
-        self.0.clone()
-    }
-}
-
-impl FromStr for PageRangeArgument {
-    type Err = &'static str;
-
-    fn from_str(value: &str) -> Result<Self, Self::Err> {
-        match value.split('-').map(str::trim).collect::<Vec<_>>().as_slice() {
-            [] | [""] => Err("page export range must not be empty"),
-            [single_page] => {
-                let page_number = parse_page_number(single_page)?;
-                Ok(PageRangeArgument(Some(page_number)..=Some(page_number)))
-            }
-            ["", ""] => Err("page export range must have start or end"),
-            [start, ""] => Ok(PageRangeArgument(Some(parse_page_number(start)?)..=None)),
-            ["", end] => Ok(PageRangeArgument(None..=Some(parse_page_number(end)?))),
-            [start, end] => {
-                let start = parse_page_number(start)?;
-                let end = parse_page_number(end)?;
-                if start > end {
-                    Err("page export range must end at a page after the start")
-                } else {
-                    Ok(PageRangeArgument(Some(start)..=Some(end)))
-                }
-            }
-            [_, _, _, ..] => Err("page export range must have a single hyphen"),
-        }
-    }
-}
-
-fn parse_page_number(value: &str) -> Result<NonZeroUsize, &'static str> {
-    if value == "0" {
-        Err("page numbers start at one")
-    } else {
-        NonZeroUsize::from_str(value).map_err(|_| "not a valid page number")
-    }
-}
-
-/// Lists all discovered fonts in system and custom font paths
-#[derive(Debug, Clone, Parser)]
-pub struct FontsCommand {
-    /// Common font arguments
-    #[clap(flatten)]
-    pub font_args: FontArgs,
-
-    /// Also lists style variants of each font family
-    #[arg(long)]
-    pub variants: bool,
-}
-
-/// Common arguments to customize available fonts
-#[derive(Debug, Clone, Parser)]
-pub struct FontArgs {
-    /// Adds additional directories that are recursively searched for fonts
-    ///
-    /// If multiple paths are specified, they are separated by the system's path
-    /// separator (`:` on Unix-like systems and `;` on Windows).
-    #[clap(
-        long = "font-path",
-        env = "TYPST_FONT_PATHS",
-        value_name = "DIR",
-        value_delimiter = ENV_PATH_SEP,
-    )]
-    pub font_paths: Vec<PathBuf>,
-
-    /// Ensures system fonts won't be searched, unless explicitly included via
-    /// `--font-path`
-    #[arg(long)]
-    pub ignore_system_fonts: bool,
-}
-
-/// Which format to use for diagnostics.
-#[derive(Debug, Copy, Clone, Eq, PartialEq, Ord, PartialOrd, ValueEnum)]
-pub enum DiagnosticFormat {
-    Human,
-    Short,
-}
-
-impl Display for DiagnosticFormat {
-    fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
-        self.to_possible_value()
-            .expect("no values are skipped")
-            .get_name()
-            .fmt(f)
-    }
-}
-
-/// Update the CLI using a pre-compiled binary from a Typst GitHub release.
-#[derive(Debug, Clone, Parser)]
-pub struct UpdateCommand {
-    /// Which version to update to (defaults to latest)
-    pub version: Option<Version>,
-
-    /// Forces a downgrade to an older version (required for downgrading)
-    #[clap(long, default_value_t = false)]
-    pub force: bool,
-
-    /// Reverts to the version from before the last update (only possible if
-    /// `freepst update` has previously ran)
-    #[clap(
-        long,
-        default_value_t = false,
-        conflicts_with = "version",
-        conflicts_with = "force"
-    )]
-    pub revert: bool,
-
-    /// Custom path to the backup file created on update and used by `--revert`,
-    /// defaults to system-dependent location
-    #[clap(long = "backup-path", env = "TYPST_UPDATE_BACKUP_PATH", value_name = "FILE")]
-    pub backup_path: Option<PathBuf>,
-}
-
-/// Which format to use for the generated output file.
-#[derive(Debug, Copy, Clone, Eq, PartialEq, Ord, PartialOrd, ValueEnum)]
-pub enum OutputFormat {
-    Pdf,
-    Png,
-    Svg,
-}
-
-impl Display for OutputFormat {
-    fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
-        self.to_possible_value()
-            .expect("no values are skipped")
-            .get_name()
-            .fmt(f)
-    }
->>>>>>> dbf12fc8 (Взлетаем):crates/freepst-cli/src/args.rs
 }

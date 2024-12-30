@@ -24,7 +24,7 @@ use clap::error::ErrorKind;
 use clap::Parser;
 use codespan_reporting::term;
 use codespan_reporting::term::termcolor::WriteColor;
-use typst::diag::HintedStrResult;
+use freepst::diag::HintedStrResult;
 
 use crate::args::{CliArguments, Command};
 use crate::timings::Timer;
@@ -82,7 +82,7 @@ fn set_failed() {
 }
 
 /// Used by `args.rs`.
-fn typst_version() -> &'static str {
+fn freepst_version() -> &'static str {
     env!("TYPST_VERSION")
 }
 
@@ -100,7 +100,7 @@ fn print_error(msg: &str) -> io::Result<()> {
 
 #[cfg(not(feature = "self-update"))]
 mod update {
-    use typst::diag::{bail, StrResult};
+    use freepst::diag::{bail, StrResult};
 
     use crate::args::UpdateCommand;
 

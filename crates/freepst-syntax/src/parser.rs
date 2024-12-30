@@ -10,7 +10,7 @@ use crate::{ast, set, LexMode, Lexer, SyntaxError, SyntaxKind, SyntaxNode};
 
 /// Parses a source file as top-level markup.
 pub fn parse(text: &str) -> SyntaxNode {
-    let _scope = typst_timing::TimingScope::new("parse");
+    let _scope = freepst_timing::TimingScope::new("parse");
     let mut p = Parser::new(text, 0, LexMode::Markup);
     markup_exprs(&mut p, true, syntax_set!(End));
     p.finish_into(SyntaxKind::Markup)
@@ -18,7 +18,7 @@ pub fn parse(text: &str) -> SyntaxNode {
 
 /// Parses top-level code.
 pub fn parse_code(text: &str) -> SyntaxNode {
-    let _scope = typst_timing::TimingScope::new("parse code");
+    let _scope = freepst_timing::TimingScope::new("parse code");
     let mut p = Parser::new(text, 0, LexMode::Code);
     code_exprs(&mut p, syntax_set!(End));
     p.finish_into(SyntaxKind::Code)
@@ -26,7 +26,7 @@ pub fn parse_code(text: &str) -> SyntaxNode {
 
 /// Parses top-level math.
 pub fn parse_math(text: &str) -> SyntaxNode {
-    let _scope = typst_timing::TimingScope::new("parse math");
+    let _scope = freepst_timing::TimingScope::new("parse math");
     let mut p = Parser::new(text, 0, LexMode::Math);
     math_exprs(&mut p, syntax_set!(End));
     p.finish_into(SyntaxKind::Math)

@@ -16,9 +16,9 @@ pub use self::matchers::{deref_target, named_items, DerefTarget, NamedItem};
 pub use self::tooltip::{tooltip, Tooltip};
 
 use ecow::EcoString;
-use typst::syntax::package::PackageSpec;
-use typst::syntax::FileId;
-use typst::World;
+use freepst::syntax::package::PackageSpec;
+use freepst::syntax::FileId;
+use freepst::World;
 
 /// Extends the `World` for IDE functionality.
 pub trait IdeWorld: World {

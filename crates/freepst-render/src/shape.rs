@@ -1,6 +1,6 @@
 use tiny_skia as sk;
-use typst_library::layout::{Abs, Axes, Point, Ratio, Size};
-use typst_library::visualize::{
+use freepst_library::layout::{Abs, Axes, Point, Ratio, Size};
+use freepst_library::visualize::{
     Curve, CurveItem, DashPattern, FillRule, FixedStroke, Geometry, LineCap, LineJoin,
     Shape,
 };

@@ -2,9 +2,9 @@ use std::fs::File;
 use std::io::BufWriter;
 use std::path::{Path, PathBuf};
 
-use typst::diag::{bail, StrResult};
-use typst::syntax::Span;
-use typst::World;
+use freepst::diag::{bail, StrResult};
+use freepst::syntax::Span;
+use freepst::World;
 
 use crate::args::{CliArguments, Command};
 use crate::world::SystemWorld;
@@ -29,7 +29,7 @@ impl Timer {
 
         // Enable event collection.
         if record.is_some() {
-            typst_timing::enable();
+            freepst_timing::enable();
         }
 
         let path =
@@ -48,7 +48,7 @@ impl Timer {
             return Ok(f(world));
         };
 
-        typst_timing::clear();
+        freepst_timing::clear();
 
         let string = path.to_str().unwrap_or_default();
         let numbered = string.contains("{n}");
@@ -71,7 +71,7 @@ impl Timer {
             File::create(path).map_err(|e| format!("failed to create file: {e}"))?;
         let writer = BufWriter::with_capacity(1 << 20, file);
 
-        typst_timing::export_json(writer, |span| {
+        freepst_timing::export_json(writer, |span| {
             resolve_span(world, Span::from_raw(span))
                 .unwrap_or_else(|| ("unknown".to_string(), 0))
         })?;

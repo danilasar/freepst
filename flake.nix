@@ -79,10 +79,10 @@
           ];
 
           postInstall = ''
-            installManPage crates/typst-cli/artifacts/*.1
+            installManPage crates/freepst-cli/artifacts/*.1
             installShellCompletion \
-              crates/typst-cli/artifacts/typst.{bash,fish} \
-              --zsh crates/typst-cli/artifacts/_typst
+              crates/freepst-cli/artifacts/typst.{bash,fish} \
+              --zsh crates/freepst-cli/artifacts/_typst
           '';
 
           GEN_ARTIFACTS = "artifacts";
@@ -101,7 +101,7 @@
 
         packages = {
           default = typst;
-          typst-dev = self'.packages.default;
+          freepst-dev = self'.packages.default;
         };
 
         overlayAttrs = builtins.removeAttrs self'.packages [ "default" ];
@@ -112,12 +112,12 @@
         };
 
         checks = {
-          typst-fmt = craneLib.cargoFmt commonCraneArgs;
-          typst-clippy = craneLib.cargoClippy (commonCraneArgs // {
+          freepst-fmt = craneLib.cargoFmt commonCraneArgs;
+          freepst-clippy = craneLib.cargoClippy (commonCraneArgs // {
             inherit cargoArtifacts;
             cargoClippyExtraArgs = "--workspace -- --deny warnings";
           });
-          typst-test = craneLib.cargoTest (commonCraneArgs // {
+          freepst-test = craneLib.cargoTest (commonCraneArgs // {
             inherit cargoArtifacts;
             cargoTestExtraArgs = "--workspace";
           });

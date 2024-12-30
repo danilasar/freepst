@@ -1,5 +1,5 @@
-use typst::diag::{bail, StrResult};
-use typst::foundations::Func;
+use freepst::diag::{bail, StrResult};
+use freepst::foundations::Func;
 
 use crate::{get_module, GROUPS, LIBRARY};
 

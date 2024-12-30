@@ -13,8 +13,8 @@ use std::path::{Path, PathBuf};
 use std::sync::OnceLock;
 
 use fontdb::{Database, Source};
-use typst_library::text::{Font, FontBook, FontInfo};
-use typst_timing::TimingScope;
+use freepst_library::text::{Font, FontBook, FontInfo};
+use freepst_timing::TimingScope;
 
 /// Holds details about the location of a font and lazily the font itself.
 #[derive(Debug)]
@@ -124,7 +124,7 @@ impl FontSearcher {
     ///
     /// # Examples
     /// ```no_run
-    /// # use typst_kit::fonts::FontSearcher;
+    /// # use freepst_kit::fonts::FontSearcher;
     /// let fonts = FontSearcher::new()
     ///     .include_system_fonts(true)
     ///     .search();
@@ -137,7 +137,7 @@ impl FontSearcher {
     ///
     /// # Examples
     /// ```no_run
-    /// # use typst_kit::fonts::FontSearcher;
+    /// # use freepst_kit::fonts::FontSearcher;
     /// let fonts = FontSearcher::new()
     ///     .include_system_fonts(true)
     ///     .search_with(["./assets/fonts/"]);
@@ -195,8 +195,8 @@ impl FontSearcher {
     /// Add fonts that are embedded in the binary.
     #[cfg(feature = "embed-fonts")]
     fn add_embedded(&mut self) {
-        for data in typst_assets::fonts() {
-            let buffer = typst_library::foundations::Bytes::from_static(data);
+        for data in freepst_assets::fonts() {
+            let buffer = freepst_library::foundations::Bytes::from_static(data);
             for (i, font) in Font::iter(buffer).enumerate() {
                 self.book.push(font.info().clone());
                 self.fonts.push(FontSlot {

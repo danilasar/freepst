@@ -1,7 +1,7 @@
-use typst::foundations::{Label, Selector, Value};
-use typst::layout::PagedDocument;
-use typst::syntax::{ast, LinkedNode, Side, Source, Span};
-use typst::utils::PicoStr;
+use freepst::foundations::{Label, Selector, Value};
+use freepst::layout::PagedDocument;
+use freepst::syntax::{ast, LinkedNode, Side, Source, Span};
+use freepst::utils::PicoStr;
 
 use crate::utils::globals;
 use crate::{
@@ -89,9 +89,9 @@ mod tests {
     use std::borrow::Borrow;
     use std::ops::Range;
 
-    use typst::foundations::{IntoValue, NativeElement};
-    use typst::syntax::Side;
-    use typst::WorldExt;
+    use freepst::foundations::{IntoValue, NativeElement};
+    use freepst::syntax::Side;
+    use freepst::WorldExt;
 
     use super::{definition, Definition};
     use crate::tests::{FilePos, TestWorld, WorldLike};
@@ -136,7 +136,7 @@ mod tests {
     fn test(world: impl WorldLike, pos: impl FilePos, side: Side) -> Response {
         let world = world.acquire();
         let world = world.borrow();
-        let doc = typst::compile(world).output.ok();
+        let doc = freepst::compile(world).output.ok();
         let (source, cursor) = pos.resolve(world);
         let def = definition(world, doc.as_ref(), &source, cursor, side);
         (world.clone(), def)
@@ -186,6 +186,6 @@ mod tests {
 
     #[test]
     fn test_definition_std() {
-        test("#table", 1, Side::After).must_be_value(typst::model::TableElem::elem());
+        test("#table", 1, Side::After).must_be_value(freepst::model::TableElem::elem());
     }
 }

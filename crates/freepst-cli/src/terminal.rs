@@ -2,7 +2,7 @@ use std::io::{self, IsTerminal, Write};
 
 use codespan_reporting::term::termcolor;
 use termcolor::{ColorChoice, WriteColor};
-use typst::utils::singleton;
+use freepst::utils::singleton;
 
 use crate::ARGS;
 

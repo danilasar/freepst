@@ -33,7 +33,7 @@ pub struct ClassElem {
 }
 
 impl LayoutMath for Packed<ClassElem> {
-    #[typst_macros::time(name = "math.class", span = self.span())]
+    #[freepst_macros::time(name = "math.class", span = self.span())]
     fn layout_math(&self, ctx: &mut MathContext, styles: StyleChain) -> SourceResult<()> {
         let class = *self.class();
         let style = EquationElem::set_class(Some(class)).wrap();

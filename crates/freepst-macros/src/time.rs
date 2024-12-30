@@ -36,7 +36,7 @@ fn create(meta: Meta, mut item: syn::ItemFn) -> TokenStream {
     item.block.stmts.insert(
         0,
         parse_quote! {
-            let __scope = ::typst_timing::TimingScope::#construct;
+            let __scope = ::freepst_timing::TimingScope::#construct;
         },
     );
 

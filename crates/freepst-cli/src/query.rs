@@ -1,12 +1,12 @@
 use comemo::Track;
 use ecow::{eco_format, EcoString};
 use serde::Serialize;
-use typst::diag::{bail, HintedStrResult, StrResult, Warned};
-use typst::foundations::{Content, IntoValue, LocatableSelector, Scope};
-use typst::layout::PagedDocument;
-use typst::syntax::Span;
-use typst::World;
-use typst_eval::{eval_string, EvalMode};
+use freepst::diag::{bail, HintedStrResult, StrResult, Warned};
+use freepst::foundations::{Content, IntoValue, LocatableSelector, Scope};
+use freepst::layout::PagedDocument;
+use freepst::syntax::Span;
+use freepst::World;
+use freepst_eval::{eval_string, EvalMode};
 
 use crate::args::{QueryCommand, SerializationFormat};
 use crate::compile::print_diagnostics;
@@ -21,7 +21,7 @@ pub fn query(command: &QueryCommand) -> HintedStrResult<()> {
     world.reset();
     world.source(world.main()).map_err(|err| err.to_string())?;
 
-    let Warned { output, warnings } = typst::compile(&world);
+    let Warned { output, warnings } = freepst::compile(&world);
 
     match output {
         // Retrieve and print query results.
@@ -56,7 +56,7 @@ fn retrieve(
     document: &PagedDocument,
 ) -> HintedStrResult<Vec<Content>> {
     let selector = eval_string(
-        &typst::ROUTINES,
+        &freepst::ROUTINES,
         world.track(),
         &command.selector,
         Span::detached(),

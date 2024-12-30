@@ -7,11 +7,11 @@ The MIT License applies to:
   is adapted from the colors.css project
   (https://clrs.cc/)
 
-* The `RemoteReader` defined in `crates/typst-kit/src/download.rs` which is
+* The `RemoteReader` defined in `crates/freepst-kit/src/download.rs` which is
    closely modelled after the `DownloadTracker` from rustup
    (https://github.com/rust-lang/rustup/blob/master/src/cli/download_tracker.rs)
 
-* The `SyntaxSet` defined in `crates/typst-syntax/src/set.rs` which is
+* The `SyntaxSet` defined in `crates/freepst-syntax/src/set.rs` which is
   based on the `TokenSet` from rust-analyzer
   (https://github.com/rust-lang/rust-analyzer/blob/master/crates/parser/src/token_set.rs)
 
@@ -38,7 +38,7 @@ THE SOFTWARE.
 
 ================================================================================
 Alpha multiplication and source-over blending in
-`crates/typst-render/src/text.rs` are ported from Skia code which can be found
+`crates/freepst-render/src/text.rs` are ported from Skia code which can be found
 here:
 https://skia.googlesource.com/skia/+/refs/heads/main/include/core/SkColorPriv.h
 

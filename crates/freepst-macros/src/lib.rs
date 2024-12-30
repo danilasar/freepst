@@ -341,7 +341,7 @@ pub fn derive_cast(item: BoundaryStream) -> BoundaryStream {
 ///
 /// When tracing is enabled in the freepst-cli, this macro will record the
 /// invocations of the function and store them in a global map. The map can be
-/// accessed through the `typst_trace::RECORDER` static.
+/// accessed through the `freepst_trace::RECORDER` static.
 ///
 /// You can also specify the span of the function invocation:
 /// - `#[time(span = ..)]` to record the span, which will be used for the

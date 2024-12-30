@@ -3,10 +3,10 @@ use std::collections::HashMap;
 use ecow::eco_format;
 use pdf_writer::types::{ColorSpaceOperand, PaintType, TilingType};
 use pdf_writer::{Filter, Name, Rect, Ref};
-use typst_library::diag::SourceResult;
-use typst_library::layout::{Abs, Ratio, Transform};
-use typst_library::visualize::{RelativeTo, Tiling};
-use typst_utils::Numeric;
+use freepst_library::diag::SourceResult;
+use freepst_library::layout::{Abs, Ratio, Transform};
+use freepst_library::visualize::{RelativeTo, Tiling};
+use freepst_utils::Numeric;
 
 use crate::color::PaintEncode;
 use crate::resources::{Remapper, ResourcesRefs};

@@ -3,7 +3,7 @@
 #smallcaps[Smallcaps]
 
 --- smallcaps-show-rule ---
-// There is no dedicated smallcaps font in typst-dev-assets, so we just use some
+// There is no dedicated smallcaps font in freepst-dev-assets, so we just use some
 // other font to test this show rule.
 #show smallcaps: set text(font: "PT Sans")
 #smallcaps[Smallcaps]

@@ -5,18 +5,18 @@ use std::ffi::OsStr;
 use ecow::{eco_format, EcoString};
 use if_chain::if_chain;
 use serde::{Deserialize, Serialize};
-use typst::foundations::{
+use freepst::foundations::{
     fields_on, repr, AutoValue, CastInfo, Func, Label, NoneValue, ParamInfo, Repr,
     StyleChain, Styles, Type, Value,
 };
-use typst::layout::{Alignment, Dir, PagedDocument};
-use typst::syntax::ast::AstNode;
-use typst::syntax::{
+use freepst::layout::{Alignment, Dir, PagedDocument};
+use freepst::syntax::ast::AstNode;
+use freepst::syntax::{
     ast, is_id_continue, is_id_start, is_ident, FileId, LinkedNode, Side, Source,
     SyntaxKind,
 };
-use typst::text::RawElem;
-use typst::visualize::Color;
+use freepst::text::RawElem;
+use freepst::visualize::Color;
 use unscanny::Scanner;
 
 use crate::utils::{
@@ -1345,7 +1345,7 @@ impl<'a> CompletionContext<'a> {
     /// Add completions for a castable.
     fn cast_completions(&mut self, cast: &'a CastInfo) {
         // Prevent duplicate completions from appearing.
-        if !self.seen_casts.insert(typst::utils::hash128(cast)) {
+        if !self.seen_casts.insert(freepst::utils::hash128(cast)) {
             return;
         }
 
@@ -1509,7 +1509,7 @@ mod tests {
     use std::borrow::Borrow;
     use std::collections::BTreeSet;
 
-    use typst::layout::PagedDocument;
+    use freepst::layout::PagedDocument;
 
     use super::{autocomplete, Completion};
     use crate::tests::{FilePos, TestWorld, WorldLike};
@@ -1587,7 +1587,7 @@ mod tests {
     fn test(world: impl WorldLike, pos: impl FilePos) -> Response {
         let world = world.acquire();
         let world = world.borrow();
-        let doc = typst::compile(world).output.ok();
+        let doc = freepst::compile(world).output.ok();
         test_with_doc(world, pos, doc.as_ref())
     }
 
@@ -1637,7 +1637,7 @@ mod tests {
         // First compile a working file to get a document.
         let mut world =
             TestWorld::new("#bibliography(\"works.bib\") <bib>").with_asset("works.bib");
-        let doc = typst::compile(&world).output.ok();
+        let doc = freepst::compile(&world).output.ok();
 
         // Then, add the invalid `#cite` call. Had the document been invalid
         // initially, we would have no populated document to autocomplete with.

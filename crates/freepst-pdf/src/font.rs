@@ -8,10 +8,10 @@ use pdf_writer::writers::{FontDescriptor, WMode};
 use pdf_writer::{Chunk, Filter, Finish, Name, Rect, Ref, Str};
 use subsetter::GlyphRemapper;
 use ttf_parser::{name_id, GlyphId, Tag};
-use typst_library::diag::{At, SourceResult};
-use typst_library::text::Font;
-use typst_syntax::Span;
-use typst_utils::SliceExt;
+use freepst_library::diag::{At, SourceResult};
+use freepst_library::text::Font;
+use freepst_syntax::Span;
+use freepst_utils::SliceExt;
 
 use crate::{deflate, EmExt, NameExt, PdfChunk, WithGlobalRefs};
 
@@ -29,7 +29,7 @@ pub(crate) const SYSTEM_INFO: SystemInfo = SystemInfo {
 };
 
 /// Embed all used fonts into the PDF.
-#[typst_macros::time(name = "write fonts")]
+#[freepst_macros::time(name = "write fonts")]
 pub fn write_fonts(
     context: &WithGlobalRefs,
 ) -> SourceResult<(PdfChunk, HashMap<Font, Ref>)> {
@@ -208,7 +208,7 @@ pub fn write_font_descriptor<'a>(
 ///
 /// In both cases, this returns the already compressed data.
 #[comemo::memoize]
-#[typst_macros::time(name = "subset font")]
+#[freepst_macros::time(name = "subset font")]
 fn subset_font(
     font: &Font,
     glyph_remapper: &GlyphRemapper,
@@ -249,7 +249,7 @@ pub(crate) fn base_font_name<T: Hash>(font: &Font, glyphs: &T) -> EcoString {
 /// Produce a unique 6 letter tag for a glyph set.
 pub(crate) fn subset_tag<T: Hash>(glyphs: &T) -> EcoString {
     const BASE: u128 = 26;
-    let mut hash = typst_utils::hash128(&glyphs);
+    let mut hash = freepst_utils::hash128(&glyphs);
     let mut letter = [b'A'; SUBSET_TAG_LEN];
     for l in letter.iter_mut() {
         *l = b'A' + (hash % BASE) as u8;
@@ -260,7 +260,7 @@ pub(crate) fn subset_tag<T: Hash>(glyphs: &T) -> EcoString {
 
 /// Create a compressed `/ToUnicode` CMap.
 #[comemo::memoize]
-#[typst_macros::time(name = "create cmap")]
+#[freepst_macros::time(name = "create cmap")]
 fn create_cmap(
     glyph_set: &BTreeMap<u16, EcoString>,
     glyph_remapper: &GlyphRemapper,

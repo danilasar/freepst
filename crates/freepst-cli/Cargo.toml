@@ -16,26 +16,15 @@ path = "src/main.rs"
 doc = false
 
 [dependencies]
-<<<<<<< HEAD:crates/typst-cli/Cargo.toml
-typst = { workspace = true }
-typst-eval = { workspace = true }
-typst-html = { workspace = true }
-typst-kit = { workspace = true }
-typst-macros = { workspace = true }
-typst-pdf = { workspace = true }
-typst-render = { workspace = true }
-typst-svg = { workspace = true }
-typst-timing = { workspace = true }
-=======
 freepst = { workspace = true }
-typst-assets = { workspace = true, features = ["fonts"] }
+freepst-eval = { workspace = true }
+freepst-html = { workspace = true }
 freepst-kit = { workspace = true }
 freepst-macros = { workspace = true }
 freepst-pdf = { workspace = true }
 freepst-render = { workspace = true }
 freepst-svg = { workspace = true }
 freepst-timing = { workspace = true }
->>>>>>> dbf12fc8 (Взлетаем):crates/freepst-cli/Cargo.toml
 chrono = { workspace = true }
 clap = { workspace = true }
 codespan-reporting = { workspace = true }
@@ -94,8 +83,8 @@ workspace = true
 # The following metadata is used by `cargo-binstall`, and should be synchronized
 # with `.github/workflows/release.yml`.
 [package.metadata.binstall]
-pkg-url = "{ repo }/releases/download/v{ version }/typst-{ target }{ archive-suffix }"
-bin-dir = "typst-{ target }/typst{ binary-ext }"
+pkg-url = "{ repo }/releases/download/v{ version }/freepst-{ target }{ archive-suffix }"
+bin-dir = "freepst-{ target }/typst{ binary-ext }"
 pkg-fmt = "txz"
 
 [package.metadata.binstall.overrides]

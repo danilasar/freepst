@@ -1,9 +1,9 @@
 use std::num::NonZeroUsize;
 
 use pdf_writer::{Finish, Pdf, Ref, TextStr};
-use typst_library::foundations::{NativeElement, Packed, StyleChain};
-use typst_library::layout::Abs;
-use typst_library::model::HeadingElem;
+use freepst_library::foundations::{NativeElement, Packed, StyleChain};
+use freepst_library::layout::Abs;
+use freepst_library::model::HeadingElem;
 
 use crate::{AbsExt, TextStrExt, WithEverything};
 

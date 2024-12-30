@@ -32,7 +32,7 @@ pub struct LrElem {
 }
 
 impl LayoutMath for Packed<LrElem> {
-    #[typst_macros::time(name = "math.lr", span = self.span())]
+    #[freepst_macros::time(name = "math.lr", span = self.span())]
     fn layout_math(&self, ctx: &mut MathContext, styles: StyleChain) -> SourceResult<()> {
         let mut body = self.body();
 
@@ -115,7 +115,7 @@ pub struct MidElem {
 }
 
 impl LayoutMath for Packed<MidElem> {
-    #[typst_macros::time(name = "math.mid", span = self.span())]
+    #[freepst_macros::time(name = "math.mid", span = self.span())]
     fn layout_math(&self, ctx: &mut MathContext, styles: StyleChain) -> SourceResult<()> {
         let mut fragments = ctx.layout_into_fragments(self.body(), styles)?;
 

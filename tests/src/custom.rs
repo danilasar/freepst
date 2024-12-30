@@ -1,9 +1,9 @@
 use std::fmt::Write;
 
-use typst::foundations::Smart;
-use typst::layout::PagedDocument;
-use typst::model::DocumentInfo;
-use typst::World;
+use freepst::foundations::Smart;
+use freepst::layout::PagedDocument;
+use freepst::model::DocumentInfo;
+use freepst::World;
 
 use crate::collect::Test;
 use crate::world::TestWorld;

@@ -110,7 +110,7 @@ struct LocateElem {
 }
 
 impl Show for Packed<LocateElem> {
-    #[typst_macros::time(name = "locate", span = self.span())]
+    #[freepst_macros::time(name = "locate", span = self.span())]
     fn show(&self, engine: &mut Engine, styles: StyleChain) -> SourceResult<Content> {
         let location = self.location().unwrap();
         let context = Context::new(Some(location), Some(styles));

@@ -9,5 +9,5 @@ third-party [Tinymist extension](https://github.com/Myriad-Dreamin/tinymist).
 
 ## Installation
 The simplest way to install this extension (and keep it up-to-date) is to add a
-symlink from `~/.vscode/extensions/typst-support` to
+symlink from `~/.vscode/extensions/freepst-support` to
 `path/to/typst/tools/support`.

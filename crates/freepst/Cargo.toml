@@ -11,12 +11,12 @@ repository = { workspace = true }
 readme = { workspace = true }
 
 [dependencies]
-typst-eval = { workspace = true }
-typst-html = { workspace = true }
-typst-layout = { workspace = true }
-typst-library = { workspace = true }
+freepst-eval = { workspace = true }
+freepst-html = { workspace = true }
+freepst-layout = { workspace = true }
+freepst-library = { workspace = true }
 freepst-macros = { workspace = true }
-typst-realize = { workspace = true }
+freepst-realize = { workspace = true }
 freepst-syntax = { workspace = true }
 freepst-timing = { workspace = true }
 freepst-utils = { workspace = true }

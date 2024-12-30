@@ -11,15 +11,9 @@ keywords = { workspace = true }
 readme = { workspace = true }
 
 [dependencies]
-<<<<<<< HEAD:crates/typst-render/Cargo.toml
-typst-library = { workspace = true }
-typst-macros = { workspace = true }
-typst-timing = { workspace = true }
-=======
-freepst = { workspace = true }
+freepst-library = { workspace = true }
 freepst-macros = { workspace = true }
 freepst-timing = { workspace = true }
->>>>>>> dbf12fc8 (Взлетаем):crates/freepst-render/Cargo.toml
 bytemuck = { workspace = true }
 comemo = { workspace = true }
 image = { workspace = true }

@@ -11,20 +11,13 @@ keywords = { workspace = true }
 readme = { workspace = true }
 
 [dependencies]
-<<<<<<< HEAD:crates/typst-pdf/Cargo.toml
-typst-assets = { workspace = true }
-typst-library = { workspace = true }
-typst-macros = { workspace = true }
-typst-syntax = { workspace = true }
-typst-timing = { workspace = true }
-typst-utils = { workspace = true }
-arrayvec = { workspace = true }
-=======
-freepst = { workspace = true }
-typst-assets = { workspace = true }
+freepst-assets = { workspace = true }
+freepst-library = { workspace = true }
 freepst-macros = { workspace = true }
+freepst-syntax = { workspace = true }
 freepst-timing = { workspace = true }
->>>>>>> dbf12fc8 (Взлетаем):crates/freepst-pdf/Cargo.toml
+freepst-utils = { workspace = true }
+arrayvec = { workspace = true }
 base64 = { workspace = true }
 bytemuck = { workspace = true }
 comemo = { workspace = true }

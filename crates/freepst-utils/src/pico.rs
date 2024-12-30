@@ -195,12 +195,12 @@ mod bitcode {
             match self {
                 Self::TooLong => {
                     "the maximum auto-internible string length is 12. \
-                     you can add an exception to typst-utils/src/pico.rs \
+                     you can add an exception to freepst-utils/src/pico.rs \
                      to intern longer strings."
                 }
                 Self::BadChar => {
                     "can only auto-intern the chars 'a'-'z', '1'-'4', and '-'. \
-                     you can add an exception to typst-utils/src/pico.rs \
+                     you can add an exception to freepst-utils/src/pico.rs \
                      to intern other strings."
                 }
             }

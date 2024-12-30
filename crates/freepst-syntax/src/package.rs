@@ -40,7 +40,7 @@ pub struct PackageManifest {
 /// ```
 /// # use serde::{Deserialize, Serialize};
 /// # use ecow::EcoString;
-/// # use typst_syntax::package::PackageManifest;
+/// # use freepst_syntax::package::PackageManifest;
 /// #[derive(Debug, PartialEq, Serialize, Deserialize)]
 /// struct MyTool {
 ///     key: EcoString,
@@ -263,20 +263,20 @@ impl Display for VersionlessPackageSpec {
     }
 }
 
-fn parse_namespace<'s>(s: &mut Scanner<'s>) -> Result<&'s str, EcoString> {
+fn parse_namespace<'s>(s: &mut Scanner<'s>) -> Result<String, EcoString> {
     if !s.eat_if('@') {
         Err("package specification must start with '@'")?;
     }
 
-    let namespace = s.eat_until('/');
+    let namespace = s.eat_until('/').to_string();
 
     if namespace.is_empty() {
         Err("package specification is missing namespace")?;
-    } else if !is_ident(namespace) {
+    } else if !is_ident(namespace.as_str()) {
         Err(eco_format!("`{namespace}` is not a valid package namespace"))?;
     }
 
-    let namespace = namespace.replace("::", "/").as_str();
+    let namespace = namespace.replace("::", "/");
     Ok(namespace)
 }
 

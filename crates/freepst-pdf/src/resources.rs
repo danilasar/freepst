@@ -12,11 +12,11 @@ use std::hash::Hash;
 use ecow::{eco_format, EcoString};
 use pdf_writer::{Dict, Finish, Name, Ref};
 use subsetter::GlyphRemapper;
-use typst_library::diag::{SourceResult, StrResult};
-use typst_library::text::{Font, Lang};
-use typst_library::visualize::Image;
-use typst_syntax::Span;
-use typst_utils::Deferred;
+use freepst_library::diag::{SourceResult, StrResult};
+use freepst_library::text::{Font, Lang};
+use freepst_library::visualize::Image;
+use freepst_syntax::Span;
+use freepst_utils::Deferred;
 
 use crate::color::ColorSpaces;
 use crate::color_font::ColorFontMap;

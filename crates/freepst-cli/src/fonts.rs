@@ -1,5 +1,5 @@
-use typst::text::FontVariant;
-use typst_kit::fonts::Fonts;
+use freepst::text::FontVariant;
+use freepst_kit::fonts::Fonts;
 
 use crate::args::FontsCommand;
 

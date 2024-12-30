@@ -16,7 +16,7 @@
 /// # Examples
 ///
 /// ```
-/// # use typst_utils::round_with_precision;
+/// # use freepst_utils::round_with_precision;
 /// let rounded = round_with_precision(-0.56553, 2);
 /// assert_eq!(-0.57, rounded);
 ///
@@ -72,7 +72,7 @@ pub fn round_with_precision(value: f64, precision: i16) -> f64 {
 /// # Examples
 ///
 /// ```
-/// # use typst_utils::round_int_with_precision;
+/// # use freepst_utils::round_int_with_precision;
 /// let rounded = round_int_with_precision(-154, -2);
 /// assert_eq!(Some(-200), rounded);
 ///

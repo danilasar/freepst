@@ -1,5 +1,5 @@
 {
-  "name": "typst-test-helper",
+  "name": "freepst-test-helper",
   "publisher": "typst",
   "displayName": "Typst Test Helper",
   "description": "Helps to run, compare and update Typst tests.",
@@ -14,77 +14,77 @@
   "contributes": {
     "commands": [
       {
-        "command": "typst-test-helper.refreshFromPreview",
+        "command": "freepst-test-helper.refreshFromPreview",
         "title": "Refresh preview",
         "category": "Typst Test Helper",
         "icon": "$(refresh)"
       },
       {
-        "command": "typst-test-helper.runFromPreview",
+        "command": "freepst-test-helper.runFromPreview",
         "title": "Run test",
         "category": "Typst Test Helper",
         "icon": "$(debug-start)",
-        "enablement": "typst-test-helper.runButtonEnabled"
+        "enablement": "freepst-test-helper.runButtonEnabled"
       },
       {
-        "command": "typst-test-helper.saveFromPreview",
+        "command": "freepst-test-helper.saveFromPreview",
         "title": "Run and save reference output",
         "category": "Typst Test Helper",
         "icon": "$(save)",
-        "enablement": "typst-test-helper.runButtonEnabled"
+        "enablement": "freepst-test-helper.runButtonEnabled"
       },
       {
-        "command": "typst-test-helper.copyImageFilePathFromPreviewContext",
+        "command": "freepst-test-helper.copyImageFilePathFromPreviewContext",
         "title": "Copy image file path",
         "category": "Typst Test Helper"
       },
       {
-        "command": "typst-test-helper.increaseResolution",
+        "command": "freepst-test-helper.increaseResolution",
         "title": "Render at higher resolution",
         "category": "Typst Test Helper",
         "icon": "$(zoom-in)",
-        "enablement": "typst-test-helper.runButtonEnabled"
+        "enablement": "freepst-test-helper.runButtonEnabled"
       },
       {
-        "command": "typst-test-helper.decreaseResolution",
+        "command": "freepst-test-helper.decreaseResolution",
         "title": "Render at lower resolution",
         "category": "Typst Test Helper",
         "icon": "$(zoom-out)",
-        "enablement": "typst-test-helper.runButtonEnabled"
+        "enablement": "freepst-test-helper.runButtonEnabled"
       }
     ],
     "menus": {
       "editor/title": [
         {
-          "when": "activeWebviewPanelId == typst-test-helper.preview",
-          "command": "typst-test-helper.refreshFromPreview",
+          "when": "activeWebviewPanelId == freepst-test-helper.preview",
+          "command": "freepst-test-helper.refreshFromPreview",
           "group": "navigation@1"
         },
         {
-          "when": "activeWebviewPanelId == typst-test-helper.preview",
-          "command": "typst-test-helper.runFromPreview",
+          "when": "activeWebviewPanelId == freepst-test-helper.preview",
+          "command": "freepst-test-helper.runFromPreview",
           "group": "navigation@2"
         },
         {
-          "when": "activeWebviewPanelId == typst-test-helper.preview",
-          "command": "typst-test-helper.saveFromPreview",
+          "when": "activeWebviewPanelId == freepst-test-helper.preview",
+          "command": "freepst-test-helper.saveFromPreview",
           "group": "navigation@3"
         },
         {
-          "when": "activeWebviewPanelId == typst-test-helper.preview",
-          "command": "typst-test-helper.increaseResolution",
+          "when": "activeWebviewPanelId == freepst-test-helper.preview",
+          "command": "freepst-test-helper.increaseResolution",
           "group": "navigation@4"
         },
         {
-          "when": "activeWebviewPanelId == typst-test-helper.preview",
-          "command": "typst-test-helper.decreaseResolution",
+          "when": "activeWebviewPanelId == freepst-test-helper.preview",
+          "command": "freepst-test-helper.decreaseResolution",
           "group": "navigation@4"
         }
       ],
       "webview/context": [
         {
-          "command": "typst-test-helper.copyImageFilePathFromPreviewContext",
-          "when": "webviewId == typst-test-helper.preview && (webviewSection == png || webviewSection == ref)"
+          "command": "freepst-test-helper.copyImageFilePathFromPreviewContext",
+          "when": "webviewId == freepst-test-helper.preview && (webviewSection == png || webviewSection == ref)"
         }
       ]
     }

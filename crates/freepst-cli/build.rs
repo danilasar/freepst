@@ -18,7 +18,7 @@ fn main() {
     println!("cargo:rerun-if-env-changed=GEN_ARTIFACTS");
 
     if option_env!("TYPST_VERSION").is_none() {
-        println!("cargo:rustc-env=TYPST_VERSION={}", typst_version());
+        println!("cargo:rustc-env=TYPST_VERSION={}", freepst_version());
     }
 
     if let Some(dir) = env::var_os("GEN_ARTIFACTS") {
@@ -44,7 +44,7 @@ fn main() {
 }
 
 /// Also used by `args.rs`.
-fn typst_version() -> String {
+fn freepst_version() -> String {
     if let Some(version) = option_env!("TYPST_VERSION") {
         return version.to_owned();
     }

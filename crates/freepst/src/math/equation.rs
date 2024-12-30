@@ -261,7 +261,7 @@ impl Outlinable for Packed<EquationElem> {
 }
 
 /// Layout an inline equation (in a paragraph).
-#[typst_macros::time(span = elem.span())]
+#[freepst_macros::time(span = elem.span())]
 fn layout_equation_inline(
     elem: &Packed<EquationElem>,
     engine: &mut Engine,
@@ -312,7 +312,7 @@ fn layout_equation_inline(
 }
 
 /// Layout a block-level equation (in a flow).
-#[typst_macros::time(span = elem.span())]
+#[freepst_macros::time(span = elem.span())]
 fn layout_equation_block(
     elem: &Packed<EquationElem>,
     engine: &mut Engine,

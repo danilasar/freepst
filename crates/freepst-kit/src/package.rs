@@ -5,8 +5,8 @@ use std::path::{Path, PathBuf};
 
 use ecow::eco_format;
 use once_cell::sync::OnceCell;
-use typst_library::diag::{bail, PackageError, PackageResult, StrResult};
-use typst_syntax::package::{
+use freepst_library::diag::{bail, PackageError, PackageResult, StrResult};
+use freepst_syntax::package::{
     PackageInfo, PackageSpec, PackageVersion, VersionlessPackageSpec,
 };
 

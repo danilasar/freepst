@@ -1,7 +1,7 @@
 use ecow::EcoString;
-use typst::foundations::{Module, Value};
-use typst::syntax::ast::AstNode;
-use typst::syntax::{ast, LinkedNode, Span, SyntaxKind, SyntaxNode};
+use freepst::foundations::{Module, Value};
+use freepst::syntax::ast::AstNode;
+use freepst::syntax::{ast, LinkedNode, Span, SyntaxKind, SyntaxNode};
 
 use crate::{analyze_import, IdeWorld};
 
@@ -269,7 +269,7 @@ mod tests {
     use std::borrow::Borrow;
 
     use ecow::EcoString;
-    use typst::syntax::{LinkedNode, Side};
+    use freepst::syntax::{LinkedNode, Side};
 
     use super::named_items;
     use crate::tests::{FilePos, WorldLike};

@@ -3,11 +3,11 @@ use std::ops::ControlFlow;
 
 use comemo::Track;
 use ecow::{eco_format, EcoString};
-use typst::engine::{Engine, Route, Sink, Traced};
-use typst::foundations::{Scope, Value};
-use typst::introspection::Introspector;
-use typst::syntax::{LinkedNode, SyntaxKind};
-use typst::text::{FontInfo, FontStyle};
+use freepst::engine::{Engine, Route, Sink, Traced};
+use freepst::foundations::{Scope, Value};
+use freepst::introspection::Introspector;
+use freepst::syntax::{LinkedNode, SyntaxKind};
+use freepst::text::{FontInfo, FontStyle};
 
 use crate::IdeWorld;
 
@@ -20,7 +20,7 @@ where
     let traced = Traced::default();
     let mut sink = Sink::new();
     let mut engine = Engine {
-        routines: &typst::ROUTINES,
+        routines: &freepst::ROUTINES,
         world: world.upcast().track(),
         introspector: introspector.track(),
         traced: traced.track(),

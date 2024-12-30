@@ -1,10 +1,10 @@
 use std::num::NonZeroUsize;
 
-use typst::layout::{Frame, FrameItem, PagedDocument, Point, Position, Size};
-use typst::model::{Destination, Url};
-use typst::syntax::{FileId, LinkedNode, Side, Source, Span, SyntaxKind};
-use typst::visualize::Geometry;
-use typst::WorldExt;
+use freepst::layout::{Frame, FrameItem, PagedDocument, Point, Position, Size};
+use freepst::model::{Destination, Url};
+use freepst::syntax::{FileId, LinkedNode, Side, Source, Span, SyntaxKind};
+use freepst::visualize::Geometry;
+use freepst::WorldExt;
 
 use crate::IdeWorld;
 
@@ -185,7 +185,7 @@ mod tests {
     use std::borrow::Borrow;
     use std::num::NonZeroUsize;
 
-    use typst::layout::{Abs, Point, Position};
+    use freepst::layout::{Abs, Point, Position};
 
     use super::{jump_from_click, jump_from_cursor, Jump};
     use crate::tests::{FilePos, TestWorld, WorldLike};
@@ -215,7 +215,7 @@ mod tests {
     fn test_click(world: impl WorldLike, click: Point, expected: Option<Jump>) {
         let world = world.acquire();
         let world = world.borrow();
-        let doc = typst::compile(world).output.unwrap();
+        let doc = freepst::compile(world).output.unwrap();
         let jump = jump_from_click(world, &doc, &doc.pages[0].frame, click);
         if let (Some(Jump::Position(pos)), Some(Jump::Position(expected))) =
             (&jump, &expected)
@@ -232,7 +232,7 @@ mod tests {
     fn test_cursor(world: impl WorldLike, pos: impl FilePos, expected: Option<Position>) {
         let world = world.acquire();
         let world = world.borrow();
-        let doc = typst::compile(world).output.unwrap();
+        let doc = freepst::compile(world).output.unwrap();
         let (source, cursor) = pos.resolve(world);
         let pos = jump_from_cursor(&doc, &source, cursor);
         assert_eq!(!pos.is_empty(), expected.is_some());

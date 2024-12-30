@@ -18,8 +18,9 @@ cli = ["clap", "freepst-render", "serde_json"]
 [dependencies]
 freepst = { workspace = true }
 freepst-render = { workspace = true, optional = true }
-typst-assets = { workspace = true, features = ["fonts"] }
-typst-dev-assets = { workspace = true }
+typed-arena = { workspace = true }
+freepst-assets = { workspace = true, features = ["fonts"] }
+freepst-dev-assets = { workspace = true }
 clap = { workspace = true, optional = true }
 ecow = { workspace = true }
 heck = { workspace = true }
@@ -28,8 +29,6 @@ serde = { workspace = true }
 serde_json = { workspace = true, optional = true }
 serde_yaml = { workspace = true }
 syntect = { workspace = true, features = ["html"] }
-typed-arena = { workspace = true }
-typst-render = { workspace = true, optional = true }
 unscanny = { workspace = true }
 yaml-front-matter = { workspace = true }
 

@@ -61,7 +61,7 @@ jobs:
     - name: create artifact directory
       shell: bash
       run: |
-        directory=typst-${{ matrix.target }}
+        directory=freepst-${{ matrix.target }}
         mkdir $directory
         cp README.md LICENSE NOTICE $directory
         if [ -f target/${{ matrix.target }}/release/typst.exe ]; then
@@ -75,8 +75,8 @@ jobs:
     - uses: actions/upload-artifact@v4
       if: github.event_name == 'workflow_dispatch'
       with:
-        name: typst-${{ matrix.target }}
-        path: "typst-${{ matrix.target }}.*"
+        name: freepst-${{ matrix.target }}
+        path: "freepst-${{ matrix.target }}.*"
         retention-days: 3
 
     - uses: ncipollo/release-action@v1.14.0

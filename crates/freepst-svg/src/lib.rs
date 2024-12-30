@@ -10,19 +10,19 @@ use std::fmt::{self, Display, Formatter, Write};
 
 use ecow::EcoString;
 use ttf_parser::OutlineBuilder;
-use typst_library::layout::{
+use freepst_library::layout::{
     Abs, Frame, FrameItem, FrameKind, GroupItem, Page, PagedDocument, Point, Ratio, Size,
     Transform,
 };
-use typst_library::visualize::{Geometry, Gradient, Tiling};
-use typst_utils::hash128;
+use freepst_library::visualize::{Geometry, Gradient, Tiling};
+use freepst_utils::hash128;
 use xmlwriter::XmlWriter;
 
 use crate::paint::{GradientRef, SVGSubGradient, TilingRef};
 use crate::text::RenderedGlyph;
 
 /// Export a frame into a SVG file.
-#[typst_macros::time(name = "svg")]
+#[freepst_macros::time(name = "svg")]
 pub fn svg(page: &Page) -> String {
     let mut renderer = SVGRenderer::new();
     renderer.write_header(page.frame.size());
@@ -33,7 +33,7 @@ pub fn svg(page: &Page) -> String {
 }
 
 /// Export a frame into a SVG file.
-#[typst_macros::time(name = "svg frame")]
+#[freepst_macros::time(name = "svg frame")]
 pub fn svg_frame(frame: &Frame) -> String {
     let mut renderer = SVGRenderer::new();
     renderer.write_header(frame.size());
@@ -252,11 +252,7 @@ impl SVGRenderer {
         self.xml.write_attribute("class", "freepst-group");
 
         if let Some(label) = group.label {
-<<<<<<< HEAD:crates/typst-svg/src/lib.rs
-            self.xml.write_attribute("data-typst-label", &label.resolve());
-=======
-            self.xml.write_attribute("data-freepst-label", label.as_str());
->>>>>>> dbf12fc8 (Взлетаем):crates/freepst-svg/src/lib.rs
+            self.xml.write_attribute("data-freepst-label", &label.resolve());
         }
 
         if let Some(clip_curve) = &group.clip {

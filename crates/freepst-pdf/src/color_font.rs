@@ -12,11 +12,11 @@ use indexmap::IndexMap;
 use pdf_writer::types::UnicodeCmap;
 use pdf_writer::writers::WMode;
 use pdf_writer::{Filter, Finish, Name, Rect, Ref};
-use typst_library::diag::{bail, error, SourceDiagnostic, SourceResult};
-use typst_library::foundations::Repr;
-use typst_library::layout::Em;
-use typst_library::text::color::glyph_frame;
-use typst_library::text::{Font, Glyph, TextItemView};
+use freepst_library::diag::{bail, error, SourceDiagnostic, SourceResult};
+use freepst_library::foundations::Repr;
+use freepst_library::layout::Em;
+use freepst_library::text::color::glyph_frame;
+use freepst_library::text::{Font, Glyph, TextItemView};
 
 use crate::font::{base_font_name, write_font_descriptor, CMAP_NAME, SYSTEM_INFO};
 use crate::resources::{Resources, ResourcesRefs};

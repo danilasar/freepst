@@ -9,19 +9,12 @@ repository = { workspace = true }
 readme = { workspace = true }
 
 [dependencies]
-<<<<<<< HEAD:crates/typst-kit/Cargo.toml
-typst-assets = { workspace = true, optional = true }
-typst-library = { workspace = true }
-typst-syntax = { workspace = true }
-typst-timing = { workspace = true }
-typst-utils = { workspace = true }
-dirs = { workspace = true, optional = true }
-=======
-freepst = { workspace = true }
-typst-assets = { workspace = true, optional = true }
+freepst-assets = { workspace = true, optional = true }
+freepst-library = { workspace = true }
+freepst-syntax = { workspace = true }
 freepst-timing = { workspace = true }
 freepst-utils = { workspace = true }
->>>>>>> dbf12fc8 (Взлетаем):crates/freepst-kit/Cargo.toml
+dirs = { workspace = true, optional = true }
 ecow = { workspace = true }
 env_proxy = { workspace = true, optional = true }
 flate2 = { workspace = true, optional = true }
@@ -54,7 +47,7 @@ packages = ["downloads", "dep:dirs", "dep:flate2", "dep:tar"]
 # - For code: Deja Vu Sans Mono
 #
 # Implies `fonts`
-embed-fonts = ["fonts", "dep:typst-assets", "typst-assets/fonts"]
+embed-fonts = ["fonts", "dep:freepst-assets", "freepst-assets/fonts"]
 
 # Whether to vendor OpenSSL. Not applicable to Windows and macOS builds.
 vendor-openssl = ["openssl/vendored"]

@@ -1,0 +1,32 @@
+[package]
+name = "freepst-eval"
+description = "Typst's code interpreter."
+version = { workspace = true }
+rust-version = { workspace = true }
+authors = { workspace = true }
+edition = { workspace = true }
+#homepage = { workspace = true }
+repository = { workspace = true }
+#license = { workspace = true }
+categories = { workspace = true }
+keywords = { workspace = true }
+readme = { workspace = true }
+
+[dependencies]
+freepst-library = { workspace = true }
+freepst-macros = { workspace = true }
+freepst-syntax = { workspace = true }
+freepst-timing = { workspace = true }
+freepst-utils = { workspace = true }
+comemo = { workspace = true }
+ecow = { workspace = true }
+if_chain = { workspace = true }
+indexmap = { workspace = true }
+toml = { workspace = true }
+unicode-segmentation = { workspace = true }
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+stacker = { workspace = true }
+
+[lints]
+workspace = true

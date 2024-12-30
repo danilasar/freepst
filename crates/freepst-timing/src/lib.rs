@@ -96,9 +96,9 @@ impl TimingScope {
 
     /// Create a new scope with a span if timing is enabled.
     ///
-    /// The span is a raw number because `typst-timing` can't depend on
-    /// `typst-syntax` (or else `typst-syntax` couldn't depend on
-    /// `typst-timing`).
+    /// The span is a raw number because `freepst-timing` can't depend on
+    /// `freepst-syntax` (or else `freepst-syntax` couldn't depend on
+    /// `freepst-timing`).
     #[inline]
     pub fn with_span(name: &'static str, span: Option<NonZeroU64>) -> Option<Self> {
         #[cfg(not(target_arch = "wasm32"))]

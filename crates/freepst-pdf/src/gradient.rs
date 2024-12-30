@@ -6,12 +6,12 @@ use ecow::eco_format;
 use pdf_writer::types::{ColorSpaceOperand, FunctionShadingType};
 use pdf_writer::writers::StreamShadingType;
 use pdf_writer::{Filter, Finish, Name, Ref};
-use typst_library::diag::SourceResult;
-use typst_library::layout::{Abs, Angle, Point, Quadrant, Ratio, Transform};
-use typst_library::visualize::{
+use freepst_library::diag::SourceResult;
+use freepst_library::layout::{Abs, Angle, Point, Quadrant, Ratio, Transform};
+use freepst_library::visualize::{
     Color, ColorSpace, Gradient, RatioOrAngle, RelativeTo, WeightedColor,
 };
-use typst_utils::Numeric;
+use freepst_utils::Numeric;
 
 use crate::color::{
     self, check_cmyk_allowed, ColorSpaceExt, PaintEncode, QuantizedColor,

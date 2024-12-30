@@ -10,8 +10,8 @@ use codespan_reporting::term::{self, termcolor};
 use ecow::eco_format;
 use notify::{Event, RecommendedWatcher, RecursiveMode, Watcher as _};
 use same_file::is_same_file;
-use typst::diag::{bail, StrResult};
-use typst::utils::format_duration;
+use freepst::diag::{bail, StrResult};
+use freepst::utils::format_duration;
 
 use crate::args::{Input, Output, WatchCommand};
 use crate::compile::{compile_once, CompileConfig};

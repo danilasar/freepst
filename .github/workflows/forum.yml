@@ -32,7 +32,7 @@ jobs:
 
           TITLE_JSON=$(jq -n --arg title "[#${ISSUE_NUMBER}] ${ISSUE_TITLE}" '$title')
           RAW_JSON=$(jq -n --arg raw "$RAW" '$raw')
-          EXTERNAL_ID_JSON=$(jq -n --arg external_id "gh-${REPOSITORY_OWNER}-typst-${ISSUE_NUMBER}" '$external_id')
+          EXTERNAL_ID_JSON=$(jq -n --arg external_id "gh-${REPOSITORY_OWNER}-freepst-${ISSUE_NUMBER}" '$external_id')
 
           RESPONSE=$(curl -X POST "https://forum.typst.app/posts.json" \
             --fail-with-body \

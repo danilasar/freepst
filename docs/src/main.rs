@@ -2,9 +2,9 @@ use std::fs;
 use std::path::{Path, PathBuf};
 
 use clap::Parser;
-use typst::layout::PagedDocument;
-use typst_docs::{provide, Html, Resolver};
-use typst_render::render;
+use freepst::layout::PagedDocument;
+use freepst_docs::{provide, Html, Resolver};
+use freepst_render::render;
 
 #[derive(Debug)]
 struct CliResolver<'a> {
@@ -14,7 +14,7 @@ struct CliResolver<'a> {
 }
 
 impl Resolver for CliResolver<'_> {
-    fn commits(&self, from: &str, to: &str) -> Vec<typst_docs::Commit> {
+    fn commits(&self, from: &str, to: &str) -> Vec<freepst_docs::Commit> {
         if self.verbose {
             eprintln!("commits({from}, {to})");
         }
@@ -26,7 +26,7 @@ impl Resolver for CliResolver<'_> {
         hash: u128,
         source: Option<Html>,
         document: &PagedDocument,
-    ) -> typst_docs::Html {
+    ) -> freepst_docs::Html {
         if self.verbose {
             eprintln!(
                 "example(0x{hash:x}, {:?} chars, Document)",

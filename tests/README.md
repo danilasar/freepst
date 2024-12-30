@@ -94,7 +94,7 @@ There are, broadly speaking, three kinds of tests:
 - Tests that ensure certain output is produced:
 
   - Visual output: By default, the compiler produces paged output, renders it
-    with the `typst-render` crate, and compares it against a reference image
+    with the `freepst-render` crate, and compares it against a reference image
     stored in the repository. The test runner automatically detects whether a
     test has visual output and requires a reference image in this case.
 

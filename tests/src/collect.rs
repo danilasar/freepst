@@ -6,8 +6,8 @@ use std::str::FromStr;
 use std::sync::LazyLock;
 
 use ecow::{eco_format, EcoString};
-use typst_syntax::package::PackageVersion;
-use typst_syntax::{is_id_continue, is_ident, is_newline, FileId, Source, VirtualPath};
+use freepst_syntax::package::PackageVersion;
+use freepst_syntax::{is_id_continue, is_ident, is_newline, FileId, Source, VirtualPath};
 use unscanny::Scanner;
 
 /// Collects all tests from all files.

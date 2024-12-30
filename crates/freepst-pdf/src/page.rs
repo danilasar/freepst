@@ -4,11 +4,11 @@ use std::num::NonZeroUsize;
 use ecow::EcoString;
 use pdf_writer::types::{ActionType, AnnotationFlags, AnnotationType, NumberingStyle};
 use pdf_writer::{Filter, Finish, Name, Rect, Ref, Str};
-use typst_library::diag::SourceResult;
-use typst_library::foundations::Label;
-use typst_library::introspection::Location;
-use typst_library::layout::{Abs, Page};
-use typst_library::model::{Destination, Numbering};
+use freepst_library::diag::SourceResult;
+use freepst_library::foundations::Label;
+use freepst_library::introspection::Location;
+use freepst_library::layout::{Abs, Page};
+use freepst_library::model::{Destination, Numbering};
 
 use crate::{
     content, AbsExt, PdfChunk, PdfOptions, Resources, WithDocument, WithRefs,
@@ -16,7 +16,7 @@ use crate::{
 };
 
 /// Construct page objects.
-#[typst_macros::time(name = "construct pages")]
+#[freepst_macros::time(name = "construct pages")]
 #[allow(clippy::type_complexity)]
 pub fn traverse_pages(
     state: &WithDocument,
@@ -58,7 +58,7 @@ pub fn traverse_pages(
 }
 
 /// Construct a page object.
-#[typst_macros::time(name = "construct page")]
+#[freepst_macros::time(name = "construct page")]
 fn construct_page(
     options: &PdfOptions,
     out: &mut Resources<()>,
@@ -252,7 +252,7 @@ impl PdfPageLabel {
         // If there is a suffix, we cannot use the common style optimisation,
         // since PDF does not provide a suffix field.
         let style = if pat.suffix.is_empty() {
-            use typst_library::model::NumberingKind as Kind;
+            use freepst_library::model::NumberingKind as Kind;
             use PdfPageLabelStyle as Style;
             match kind {
                 Kind::Arabic => Some(Style::Arabic),

@@ -463,7 +463,7 @@ impl Show for Packed<CircleElem> {
 }
 
 /// Layout a shape.
-#[typst_macros::time(span = span)]
+#[freepst_macros::time(span = span)]
 #[allow(clippy::too_many_arguments)]
 fn layout_shape(
     engine: &mut Engine,

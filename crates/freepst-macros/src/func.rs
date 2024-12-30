@@ -375,7 +375,7 @@ fn create_wrapper_closure(func: &Func) -> TokenStream {
         let span_ = func.special.span.then(|| quote! { args.span, });
         let forwarded = func.params.iter().filter(|param| !param.external).map(bind);
         quote! {
-            __typst_func(#self_ #engine_ #context_ #args_ #span_ #(#forwarded,)*)
+            __freepst_func(#self_ #engine_ #context_ #args_ #span_ #(#forwarded,)*)
         }
     };
 
@@ -384,7 +384,7 @@ fn create_wrapper_closure(func: &Func) -> TokenStream {
     let parent = func.parent.as_ref().map(|ty| quote! { #ty:: });
     quote! {
         |engine, context, args| {
-            let __typst_func = #parent #ident;
+            let __freepst_func = #parent #ident;
             #handlers
             #finish
             let output = #call;

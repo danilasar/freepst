@@ -55,7 +55,7 @@ impl Show for Packed<RepeatElem> {
 }
 
 /// Layout the repeated content.
-#[typst_macros::time(span = elem.span())]
+#[freepst_macros::time(span = elem.span())]
 fn layout_repeat(
     elem: &Packed<RepeatElem>,
     engine: &mut Engine,

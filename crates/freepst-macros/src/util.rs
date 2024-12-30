@@ -200,17 +200,13 @@ impl<T: Parse> Parse for Array<T> {
     }
 }
 
-<<<<<<< HEAD:crates/typst-macros/src/util.rs
-/// Shorthand for `::typst_library::foundations`.
-=======
-/// Shorthand for `::freepst::foundations`.
->>>>>>> dbf12fc8 (Взлетаем):crates/freepst-macros/src/util.rs
+/// Shorthand for `::freepst_library::foundations`.
 #[allow(non_camel_case_types)]
 pub struct foundations;
 
 impl quote::ToTokens for foundations {
     fn to_tokens(&self, tokens: &mut TokenStream) {
-        quote! { ::typst_library::foundations }.to_tokens(tokens);
+        quote! { ::freepst_library::foundations }.to_tokens(tokens);
     }
 }
 

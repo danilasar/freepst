@@ -3,10 +3,10 @@ use std::sync::Arc;
 use pixglyph::Bitmap;
 use tiny_skia as sk;
 use ttf_parser::{GlyphId, OutlineBuilder};
-use typst_library::layout::{Abs, Axes, Point, Size};
-use typst_library::text::color::{glyph_frame, should_outline};
-use typst_library::text::{Font, TextItem};
-use typst_library::visualize::{FixedStroke, Paint};
+use freepst_library::layout::{Abs, Axes, Point, Size};
+use freepst_library::text::color::{glyph_frame, should_outline};
+use freepst_library::text::{Font, TextItem};
+use freepst_library::visualize::{FixedStroke, Paint};
 
 use crate::paint::{self, GradientSampler, PaintSampler, TilingSampler};
 use crate::{shape, AbsExt, State};

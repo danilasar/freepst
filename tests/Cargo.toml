@@ -12,25 +12,24 @@ path = "src/tests.rs"
 harness = false
 
 [features]
-# Allow just compiling the parser when only testing typst-syntax. To do so,
+# Allow just compiling the parser when only testing freepst-syntax. To do so,
 # pass '--no-default-features' to 'cargo test'.
 default = [
-    # "typst-syntax" intentionally not present
-    "typst",
-    "typst-assets",
-    "typst-dev-assets",
-    "typst-html",
-    "typst-library",
-    "typst-pdf",
-    "typst-render",
-    "typst-svg",
-    "typst-svg",
+    # "freepst-syntax" intentionally not present
+    "freepst",
+    "freepst-assets",
+    "freepst-dev-assets",
+    "freepst-html",
+    "freepst-library",
+    "freepst-pdf",
+    "freepst-render",
+    "freepst-svg",
 ]
 
 [dependencies]
 freepst = { workspace = true, optional = true }
-typst-assets = { workspace = true, features = ["fonts"], optional = true }
-typst-dev-assets = { workspace = true, optional = true }
+freepst-assets = { workspace = true, features = ["fonts"], optional = true }
+freepst-dev-assets = { workspace = true, optional = true }
 freepst-pdf = { workspace = true, optional = true }
 freepst-render = { workspace = true, optional = true }
 freepst-svg = { workspace = true, optional = true }

@@ -2,11 +2,11 @@ use std::collections::{HashMap, HashSet};
 
 use pdf_writer::writers::Destination;
 use pdf_writer::{Ref, Str};
-use typst_library::diag::SourceResult;
-use typst_library::foundations::{Label, NativeElement};
-use typst_library::introspection::Location;
-use typst_library::layout::Abs;
-use typst_library::model::HeadingElem;
+use freepst_library::diag::SourceResult;
+use freepst_library::foundations::{Label, NativeElement};
+use freepst_library::introspection::Location;
+use freepst_library::layout::Abs;
+use freepst_library::model::HeadingElem;
 
 use crate::{AbsExt, PdfChunk, Renumber, StrExt, WithGlobalRefs};
 

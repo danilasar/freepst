@@ -6,8 +6,8 @@ use ecow::eco_format;
 use semver::Version;
 use serde::Deserialize;
 use tempfile::NamedTempFile;
-use typst::diag::{bail, StrResult};
-use typst_kit::download::Downloader;
+use freepst::diag::{bail, StrResult};
+use freepst_kit::download::Downloader;
 use xz2::bufread::XzDecoder;
 use zip::ZipArchive;
 
@@ -33,8 +33,8 @@ macro_rules! determine_asset {
 
     (__impl: { $($origin:literal => $target:literal),* $(,)? }) => {
         match env!("TARGET") {
-            $($origin => concat!("typst-", $target),)*
-            _ => concat!("typst-", env!("TARGET")),
+            $($origin => concat!("freepst-", $target),)*
+            _ => concat!("freepst-", env!("TARGET")),
         }
     };
 }
@@ -226,25 +226,6 @@ fn extract_binary_from_tar_xz(data: &[u8]) -> StrResult<Vec<u8>> {
     Ok(buffer)
 }
 
-<<<<<<< HEAD:crates/typst-cli/src/update.rs
-=======
-/// Determine what asset to download according to the target platform the CLI
-/// is running on.
-fn needed_asset() -> StrResult<&'static str> {
-    Ok(match env!("TARGET") {
-        "x86_64-unknown-linux-gnu" => "freepst-x86_64-unknown-linux-musl",
-        "x86_64-unknown-linux-musl" => "freepst-x86_64-unknown-linux-musl",
-        "aarch64-unknown-linux-musl" => "freepst-aarch64-unknown-linux-musl",
-        "aarch64-unknown-linux-gnu" => "freepst-aarch64-unknown-linux-musl",
-        "armv7-unknown-linux-musleabi" => "freepst-armv7-unknown-linux-musleabi",
-        "x86_64-apple-darwin" => "freepst-x86_64-apple-darwin",
-        "aarch64-apple-darwin" => "freepst-aarch64-apple-darwin",
-        "x86_64-pc-windows-msvc" => "freepst-x86_64-pc-windows-msvc",
-        target => bail!("unsupported target: {target}"),
-    })
-}
-
->>>>>>> dbf12fc8 (Взлетаем):crates/freepst-cli/src/update.rs
 /// Compare the release version to the CLI version to see if an update is needed.
 fn update_needed(release: &Release) -> StrResult<bool> {
     let current_tag: Version = env!("CARGO_PKG_VERSION").parse().unwrap();
@@ -260,7 +241,7 @@ fn update_needed(release: &Release) -> StrResult<bool> {
 
 /// Path to a potential backup file in the system.
 ///
-/// The backup will be placed as `typst_backup.part` in one of the following
+/// The backup will be placed as `freepst_backup.part` in one of the following
 /// directories, depending on the platform:
 ///  - `$XDG_STATE_HOME` or `~/.local/state` on Linux
 ///    - `$XDG_DATA_HOME` or `~/.local/share` if the above path isn't available
@@ -281,5 +262,5 @@ fn backup_path() -> StrResult<PathBuf> {
     let root_backup_dir =
         dirs::data_dir().ok_or("unable to locate local data directory")?;
 
-    Ok(root_backup_dir.join("freepst").join("typst_backup.part"))
+    Ok(root_backup_dir.join("freepst").join("freepst_backup.part"))
 }

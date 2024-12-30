@@ -14,7 +14,7 @@ pub fn symbols(stream: TokenStream) -> Result<TokenStream> {
         let kind = match &symbol.kind {
             Kind::Single(c, h) => {
                 let symbol = construct_sym_char(c, h);
-                quote! { ::typst::symbols::Symbol::single(#symbol), }
+                quote! { ::freepst::symbols::Symbol::single(#symbol), }
             }
             Kind::Multiple(variants) => {
                 let variants = variants.iter().map(|variant| {
@@ -24,7 +24,7 @@ pub fn symbols(stream: TokenStream) -> Result<TokenStream> {
                     quote! { (#name, #symbol) }
                 });
                 quote! {
-                    ::typst::symbols::Symbol::list(&[#(#variants),*])
+                    ::freepst::symbols::Symbol::list(&[#(#variants),*])
                 }
             }
         };
@@ -35,11 +35,11 @@ pub fn symbols(stream: TokenStream) -> Result<TokenStream> {
 
 fn construct_sym_char(ch: &LitChar, handler: &Handler) -> TokenStream {
     match &handler.0 {
-        None => quote! { ::typst::symbols::SymChar::pure(#ch), },
+        None => quote! { ::freepst::symbols::SymChar::pure(#ch), },
         Some(path) => quote! {
-            ::typst::symbols::SymChar::with_func(
+            ::freepst::symbols::SymChar::with_func(
                 #ch,
-                <#path as ::typst::foundations::NativeFunc>::func,
+                <#path as ::freepst::foundations::NativeFunc>::func,
             ),
         },
     }

@@ -10,20 +10,20 @@ use pdf_writer::types::{
 };
 use pdf_writer::writers::PositionedItems;
 use pdf_writer::{Content, Finish, Name, Rect, Str};
-use typst_library::diag::{bail, error, SourceDiagnostic, SourceResult};
-use typst_library::foundations::Repr;
-use typst_library::layout::{
+use freepst_library::diag::{bail, error, SourceDiagnostic, SourceResult};
+use freepst_library::foundations::Repr;
+use freepst_library::layout::{
     Abs, Em, Frame, FrameItem, GroupItem, Point, Ratio, Size, Transform,
 };
-use typst_library::model::Destination;
-use typst_library::text::color::should_outline;
-use typst_library::text::{Font, Glyph, TextItem, TextItemView};
-use typst_library::visualize::{
+use freepst_library::model::Destination;
+use freepst_library::text::color::should_outline;
+use freepst_library::text::{Font, Glyph, TextItem, TextItemView};
+use freepst_library::visualize::{
     Curve, CurveItem, FillRule, FixedStroke, Geometry, Image, LineCap, LineJoin, Paint,
     Shape,
 };
-use typst_syntax::Span;
-use typst_utils::{Deferred, Numeric, SliceExt};
+use freepst_syntax::Span;
+use freepst_utils::{Deferred, Numeric, SliceExt};
 
 use crate::color::PaintEncode;
 use crate::color_font::ColorFontMap;

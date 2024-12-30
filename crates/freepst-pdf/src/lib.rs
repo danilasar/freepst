@@ -22,13 +22,13 @@ use std::ops::{Deref, DerefMut};
 use base64::Engine;
 use pdf_writer::{Chunk, Name, Pdf, Ref, Str, TextStr};
 use serde::{Deserialize, Serialize};
-use typst_library::diag::{bail, SourceResult, StrResult};
-use typst_library::foundations::{Datetime, Smart};
-use typst_library::layout::{Abs, Em, PageRanges, PagedDocument, Transform};
-use typst_library::text::Font;
-use typst_library::visualize::Image;
-use typst_syntax::Span;
-use typst_utils::Deferred;
+use freepst_library::diag::{bail, SourceResult, StrResult};
+use freepst_library::foundations::{Datetime, Smart};
+use freepst_library::layout::{Abs, Em, PageRanges, PagedDocument, Transform};
+use freepst_library::text::Font;
+use freepst_library::visualize::Image;
+use freepst_syntax::Span;
+use freepst_utils::Deferred;
 
 use crate::catalog::write_catalog;
 use crate::color::{alloc_color_functions_refs, ColorFunctionRefs};
@@ -47,7 +47,7 @@ use crate::tiling::{write_tilings, PdfTiling};
 /// Export a document into a PDF file.
 ///
 /// Returns the raw bytes making up the PDF file.
-#[typst_macros::time(name = "pdf")]
+#[freepst_macros::time(name = "pdf")]
 pub fn pdf(document: &PagedDocument, options: &PdfOptions) -> SourceResult<Vec<u8>> {
     PdfBuilder::new(document, options)
         .phase(|builder| builder.run(traverse_pages))?
@@ -562,7 +562,7 @@ fn deflate_deferred(content: Vec<u8>) -> Deferred<Vec<u8>> {
 /// Create a base64-encoded hash of the value.
 fn hash_base64<T: Hash>(value: &T) -> String {
     base64::engine::general_purpose::STANDARD
-        .encode(typst_utils::hash128(value).to_be_bytes())
+        .encode(freepst_utils::hash128(value).to_be_bytes())
 }
 
 /// Additional methods for [`Abs`].

@@ -1,7 +1,7 @@
 use ecow::EcoString;
 use ttf_parser::OutlineBuilder;
-use typst_library::layout::{Abs, Ratio, Size, Transform};
-use typst_library::visualize::{
+use freepst_library::layout::{Abs, Ratio, Size, Transform};
+use freepst_library::visualize::{
     Curve, CurveItem, FixedStroke, Geometry, LineCap, LineJoin, Paint, RelativeTo, Shape,
 };
 

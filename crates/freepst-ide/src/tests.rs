@@ -3,14 +3,14 @@ use std::collections::HashMap;
 use std::sync::Arc;
 
 use ecow::EcoString;
-use typst::diag::{FileError, FileResult};
-use typst::foundations::{Bytes, Datetime, Smart};
-use typst::layout::{Abs, Margin, PageElem};
-use typst::syntax::package::{PackageSpec, PackageVersion};
-use typst::syntax::{FileId, Source, VirtualPath};
-use typst::text::{Font, FontBook, TextElem, TextSize};
-use typst::utils::{singleton, LazyHash};
-use typst::{Library, World};
+use freepst::diag::{FileError, FileResult};
+use freepst::foundations::{Bytes, Datetime, Smart};
+use freepst::layout::{Abs, Margin, PageElem};
+use freepst::syntax::package::{PackageSpec, PackageVersion};
+use freepst::syntax::{FileId, Source, VirtualPath};
+use freepst::text::{Font, FontBook, TextElem, TextSize};
+use freepst::utils::{singleton, LazyHash};
+use freepst::{Library, World};
 
 use crate::IdeWorld;
 
@@ -54,7 +54,7 @@ impl TestWorld {
     #[track_caller]
     pub fn with_asset_at(mut self, path: &str, filename: &str) -> Self {
         let id = FileId::new(None, VirtualPath::new(path));
-        let data = typst_dev_assets::get_by_name(filename).unwrap();
+        let data = freepst_dev_assets::get_by_name(filename).unwrap();
         let bytes = Bytes::from_static(data);
         Arc::make_mut(&mut self.files).assets.insert(id, bytes);
         self
@@ -121,7 +121,7 @@ impl IdeWorld for TestWorld {
         const LIST: &[(PackageSpec, Option<EcoString>)] = &[(
             PackageSpec {
                 // NOTE: This literal, `"preview"`, should match the const, `DEFAULT_NAMESPACE`,
-                // defined in `crates/typst-kit/src/package.rs`. However, we should always use the
+                // defined in `crates/freepst-kit/src/package.rs`. However, we should always use the
                 // literal here, not `DEFAULT_NAMESPACE`, so that this test fails if its value
                 // changes in an unexpected way.
                 namespace: EcoString::inline("preview"),
@@ -150,8 +150,8 @@ struct TestBase {
 
 impl Default for TestBase {
     fn default() -> Self {
-        let fonts: Vec<_> = typst_assets::fonts()
-            .chain(typst_dev_assets::fonts())
+        let fonts: Vec<_> = freepst_assets::fonts()
+            .chain(freepst_dev_assets::fonts())
             .flat_map(|data| Font::iter(Bytes::from_static(data)))
             .collect();
 
@@ -168,7 +168,7 @@ fn library() -> Library {
     // Set page width to 120pt with 10pt margins, so that the inner page is
     // exactly 100pt wide. Page height is unbounded and font size is 10pt so
     // that it multiplies to nice round numbers.
-    let mut lib = typst::Library::default();
+    let mut lib = freepst::Library::default();
     lib.styles
         .set(PageElem::set_width(Smart::Custom(Abs::pt(120.0).into())));
     lib.styles.set(PageElem::set_height(Smart::Auto));

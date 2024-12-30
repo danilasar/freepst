@@ -158,7 +158,7 @@ impl Debug for Downloader {
                 &self
                     .cert
                     .get()
-                    .map(|_| typst_utils::debug(|f| write!(f, "Certificate(..)"))),
+                    .map(|_| freepst_utils::debug(|f| write!(f, "Certificate(..)"))),
             )
             .finish()
     }

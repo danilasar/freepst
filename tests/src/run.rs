@@ -4,12 +4,12 @@ use std::path::PathBuf;
 
 use ecow::eco_vec;
 use tiny_skia as sk;
-use typst::diag::{SourceDiagnostic, Warned};
-use typst::html::HtmlDocument;
-use typst::layout::{Abs, Frame, FrameItem, PagedDocument, Transform};
-use typst::visualize::Color;
-use typst::{Document, WorldExt};
-use typst_pdf::PdfOptions;
+use freepst::diag::{SourceDiagnostic, Warned};
+use freepst::html::HtmlDocument;
+use freepst::layout::{Abs, Frame, FrameItem, PagedDocument, Transform};
+use freepst::visualize::Color;
+use freepst::{Document, WorldExt};
+use freepst_pdf::PdfOptions;
 
 use crate::collect::{Attr, FileSize, NoteKind, Test};
 use crate::logger::TestResult;
@@ -80,7 +80,7 @@ impl<'a> Runner<'a> {
 
     /// Run test specific to document format.
     fn run_test<D: OutputType>(&mut self) {
-        let Warned { output, warnings } = typst::compile(&self.world);
+        let Warned { output, warnings } = freepst::compile(&self.world);
         let (doc, errors) = match output {
             Ok(doc) => (Some(doc), eco_vec![]),
             Err(errors) => (None, errors),
@@ -407,14 +407,14 @@ impl OutputType for PagedDocument {
         // Write PDF if requested.
         if crate::ARGS.pdf() {
             let pdf_path = format!("{}/pdf/{}.pdf", crate::STORE_PATH, name);
-            let pdf = typst_pdf::pdf(self, &PdfOptions::default()).unwrap();
+            let pdf = freepst_pdf::pdf(self, &PdfOptions::default()).unwrap();
             std::fs::write(pdf_path, pdf).unwrap();
         }
 
         // Write SVG if requested.
         if crate::ARGS.svg() {
             let svg_path = format!("{}/svg/{}.svg", crate::STORE_PATH, name);
-            let svg = typst_svg::svg_merged(self, Abs::pt(5.0));
+            let svg = freepst_svg::svg_merged(self, Abs::pt(5.0));
             std::fs::write(svg_path, svg).unwrap();
         }
     }
@@ -454,7 +454,7 @@ impl OutputType for HtmlDocument {
 
     fn make_live(&self) -> Self::Live {
         // TODO: Do this earlier to be able to process export errors.
-        typst_html::html(self).unwrap()
+        freepst_html::html(self).unwrap()
     }
 
     fn save_live(&self, name: &str, live: &Self::Live) {
@@ -481,7 +481,7 @@ fn render(document: &PagedDocument, pixel_per_pt: f32) -> sk::Pixmap {
 
     let gap = Abs::pt(1.0);
     let mut pixmap =
-        typst_render::render_merged(document, pixel_per_pt, gap, Some(Color::BLACK));
+        freepst_render::render_merged(document, pixel_per_pt, gap, Some(Color::BLACK));
 
     let gap = (pixel_per_pt * gap.to_pt() as f32).round();
 

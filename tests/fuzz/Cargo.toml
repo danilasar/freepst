@@ -9,7 +9,7 @@ cargo-fuzz = true
 
 [dependencies]
 freepst = { workspace = true }
-typst-assets = { workspace = true, features = ["fonts"] }
+freepst-assets = { workspace = true, features = ["fonts"] }
 freepst-render = { workspace = true }
 freepst-syntax = { workspace = true }
 comemo = { workspace = true }

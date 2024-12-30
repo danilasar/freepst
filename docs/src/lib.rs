@@ -15,21 +15,21 @@ use ecow::{eco_format, EcoString};
 use serde::Deserialize;
 use serde_yaml as yaml;
 use std::sync::LazyLock;
-use typst::diag::{bail, StrResult};
-use typst::foundations::{
+use freepst::diag::{bail, StrResult};
+use freepst::foundations::{
     AutoValue, Bytes, CastInfo, Category, Func, Module, NoneValue, ParamInfo, Repr,
     Scope, Smart, Type, Value, FOUNDATIONS,
 };
-use typst::introspection::INTROSPECTION;
-use typst::layout::{Abs, Margin, PageElem, PagedDocument, LAYOUT};
-use typst::loading::DATA_LOADING;
-use typst::math::MATH;
-use typst::model::MODEL;
-use typst::symbols::SYMBOLS;
-use typst::text::{Font, FontBook, TEXT};
-use typst::utils::LazyHash;
-use typst::visualize::VISUALIZE;
-use typst::Library;
+use freepst::introspection::INTROSPECTION;
+use freepst::layout::{Abs, Margin, PageElem, PagedDocument, LAYOUT};
+use freepst::loading::DATA_LOADING;
+use freepst::math::MATH;
+use freepst::model::MODEL;
+use freepst::symbols::SYMBOLS;
+use freepst::text::{Font, FontBook, TEXT};
+use freepst::utils::LazyHash;
+use freepst::visualize::VISUALIZE;
+use freepst::Library;
 
 macro_rules! load {
     ($path:literal) => {
@@ -75,8 +75,8 @@ static LIBRARY: LazyLock<LazyHash<Library>> = LazyLock::new(|| {
 });
 
 static FONTS: LazyLock<(LazyHash<FontBook>, Vec<Font>)> = LazyLock::new(|| {
-    let fonts: Vec<_> = typst_assets::fonts()
-        .chain(typst_dev_assets::fonts())
+    let fonts: Vec<_> = freepst_assets::fonts()
+        .chain(freepst_dev_assets::fonts())
         .flat_map(|data| Font::iter(Bytes::from_static(data)))
         .collect();
     let book = FontBook::from_fonts(&fonts);
@@ -422,8 +422,8 @@ fn param_model(resolver: &dyn Resolver, info: &ParamInfo) -> ParamModel {
         types,
         strings,
         default: info.default.map(|default| {
-            let node = typst::syntax::parse_code(&default().repr());
-            Html::new(typst::syntax::highlight_html(&node))
+            let node = freepst::syntax::parse_code(&default().repr());
+            Html::new(freepst::syntax::highlight_html(&node))
         }),
         positional: info.positional,
         named: info.named,
@@ -677,10 +677,10 @@ fn symbols_model(resolver: &dyn Resolver, group: &GroupData) -> SymbolsModel {
 
             list.push(SymbolModel {
                 name: complete(variant),
-                markup_shorthand: shorthand(typst::syntax::ast::Shorthand::LIST),
-                math_shorthand: shorthand(typst::syntax::ast::MathShorthand::LIST),
+                markup_shorthand: shorthand(freepst::syntax::ast::Shorthand::LIST),
+                math_shorthand: shorthand(freepst::syntax::ast::MathShorthand::LIST),
                 codepoint: c as _,
-                accent: typst::math::Accent::combine(c).is_some(),
+                accent: freepst::math::Accent::combine(c).is_some(),
                 alternates: symbol
                     .variants()
                     .filter(|(other, _)| other != &variant)

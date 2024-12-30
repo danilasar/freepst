@@ -8,7 +8,7 @@ Empty raw block:``.
 // No extra space.
 `A``B`
 
---- raw-typst-lang ---
+--- raw-freepst-lang ---
 // Typst syntax inside.
 ```typ #let x = 1``` \
 ```typ #f(1)```

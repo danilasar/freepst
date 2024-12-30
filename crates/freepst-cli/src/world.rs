@@ -7,15 +7,15 @@ use std::{fmt, fs, io, mem};
 use chrono::{DateTime, Datelike, FixedOffset, Local, Utc};
 use ecow::{eco_format, EcoString};
 use parking_lot::Mutex;
-use typst::diag::{FileError, FileResult};
-use typst::foundations::{Bytes, Datetime, Dict, IntoValue};
-use typst::syntax::{FileId, Source, VirtualPath};
-use typst::text::{Font, FontBook};
-use typst::utils::LazyHash;
-use typst::{Library, World};
-use typst_kit::fonts::{FontSlot, Fonts};
-use typst_kit::package::PackageStorage;
-use typst_timing::timed;
+use freepst::diag::{FileError, FileResult};
+use freepst::foundations::{Bytes, Datetime, Dict, IntoValue};
+use freepst::syntax::{FileId, Source, VirtualPath};
+use freepst::text::{Font, FontBook};
+use freepst::utils::LazyHash;
+use freepst::{Library, World};
+use freepst_kit::fonts::{FontSlot, Fonts};
+use freepst_kit::package::PackageStorage;
+use freepst_timing::timed;
 
 use crate::args::{Feature, Input, ProcessArgs, WorldArgs};
 use crate::download::PrintDownload;
@@ -48,12 +48,6 @@ pub struct SystemWorld {
     /// always the same within one compilation.
     /// Reset between compilations if not [`Now::Fixed`].
     now: Now,
-<<<<<<< HEAD:crates/typst-cli/src/world.rs
-=======
-    /// The export cache, used for caching output files in `freepst watch`
-    /// sessions.
-    export_cache: ExportCache,
->>>>>>> dbf12fc8 (Взлетаем):crates/freepst-cli/src/world.rs
 }
 
 impl SystemWorld {
@@ -122,7 +116,7 @@ impl SystemWorld {
                 .features
                 .iter()
                 .map(|&feature| match feature {
-                    Feature::Html => typst::Feature::Html,
+                    Feature::Html => freepst::Feature::Html,
                 })
                 .collect();
 
@@ -358,7 +352,7 @@ impl<T: Clone> SlotCell<T> {
 
         // Read and hash the file.
         let result = timed!("loading file", load());
-        let fingerprint = timed!("hashing file", typst::utils::hash128(&result));
+        let fingerprint = timed!("hashing file", freepst::utils::hash128(&result));
 
         // If the file contents didn't change, yield the old processed data.
         if mem::replace(&mut self.fingerprint, fingerprint) == fingerprint {

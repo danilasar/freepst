@@ -1,13 +1,13 @@
 #![no_main]
 
 use libfuzzer_sys::fuzz_target;
-use typst::diag::{FileError, FileResult};
-use typst::foundations::{Bytes, Datetime};
-use typst::layout::PagedDocument;
-use typst::syntax::{FileId, Source};
-use typst::text::{Font, FontBook};
-use typst::utils::LazyHash;
-use typst::{Library, World};
+use freepst::diag::{FileError, FileResult};
+use freepst::foundations::{Bytes, Datetime};
+use freepst::layout::PagedDocument;
+use freepst::syntax::{FileId, Source};
+use freepst::text::{Font, FontBook};
+use freepst::utils::LazyHash;
+use freepst::{Library, World};
 
 struct FuzzWorld {
     library: LazyHash<Library>,
@@ -18,7 +18,7 @@ struct FuzzWorld {
 
 impl FuzzWorld {
     fn new(text: &str) -> Self {
-        let data = typst_assets::fonts().next().unwrap();
+        let data = freepst_assets::fonts().next().unwrap();
         let font = Font::new(Bytes::from_static(data), 0).unwrap();
         let book = FontBook::from_fonts([&font]);
         Self {
@@ -66,9 +66,9 @@ impl World for FuzzWorld {
 
 fuzz_target!(|text: &str| {
     let world = FuzzWorld::new(text);
-    if let Ok(document) = typst::compile::<PagedDocument>(&world).output {
+    if let Ok(document) = freepst::compile::<PagedDocument>(&world).output {
         if let Some(page) = document.pages.first() {
-            std::hint::black_box(typst_render::render(page, 1.0));
+            std::hint::black_box(freepst_render::render(page, 1.0));
         }
     }
     comemo::evict(10);

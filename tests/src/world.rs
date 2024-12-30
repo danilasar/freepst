@@ -8,18 +8,18 @@ use std::sync::OnceLock;
 
 use comemo::Tracked;
 use parking_lot::Mutex;
-use typst::diag::{bail, At, FileError, FileResult, SourceResult, StrResult};
-use typst::engine::Engine;
-use typst::foundations::{
+use freepst::diag::{bail, At, FileError, FileResult, SourceResult, StrResult};
+use freepst::engine::Engine;
+use freepst::foundations::{
     func, Array, Bytes, Context, Datetime, IntoValue, NoneValue, Repr, Smart, Value,
 };
-use typst::layout::{Abs, Margin, PageElem};
-use typst::model::{Numbering, NumberingPattern};
-use typst::syntax::{FileId, Source, Span};
-use typst::text::{Font, FontBook, TextElem, TextSize};
-use typst::utils::{singleton, LazyHash};
-use typst::visualize::Color;
-use typst::{Feature, Library, World};
+use freepst::layout::{Abs, Margin, PageElem};
+use freepst::model::{Numbering, NumberingPattern};
+use freepst::syntax::{FileId, Source, Span};
+use freepst::text::{Font, FontBook, TextElem, TextSize};
+use freepst::utils::{singleton, LazyHash};
+use freepst::visualize::Color;
+use freepst::{Feature, Library, World};
 
 /// A world that provides access to the tests environment.
 #[derive(Clone)]
@@ -96,8 +96,8 @@ struct TestBase {
 
 impl Default for TestBase {
     fn default() -> Self {
-        let fonts: Vec<_> = typst_assets::fonts()
-            .chain(typst_dev_assets::fonts())
+        let fonts: Vec<_> = freepst_assets::fonts()
+            .chain(freepst_dev_assets::fonts())
             .flat_map(|data| Font::iter(Bytes::from_static(data)))
             .collect();
 
@@ -162,7 +162,7 @@ fn system_path(id: FileId) -> FileResult<PathBuf> {
 fn read(path: &Path) -> FileResult<Cow<'static, [u8]>> {
     // Resolve asset.
     if let Ok(suffix) = path.strip_prefix("assets/") {
-        return typst_dev_assets::get(&suffix.to_string_lossy())
+        return freepst_dev_assets::get(&suffix.to_string_lossy())
             .map(Cow::Borrowed)
             .ok_or_else(|| FileError::NotFound(path.into()));
     }

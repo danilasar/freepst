@@ -3,8 +3,8 @@ use std::sync::Arc;
 use image::imageops::FilterType;
 use image::{GenericImageView, Rgba};
 use tiny_skia as sk;
-use typst_library::layout::Size;
-use typst_library::visualize::{Image, ImageKind};
+use freepst_library::layout::Size;
+use freepst_library::visualize::{Image, ImageKind};
 
 use crate::{AbsExt, State};
 

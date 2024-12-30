@@ -3,10 +3,10 @@ use std::io::Read;
 use base64::Engine;
 use ecow::EcoString;
 use ttf_parser::GlyphId;
-use typst_library::layout::{Abs, Point, Ratio, Size, Transform};
-use typst_library::text::{Font, TextItem};
-use typst_library::visualize::{FillRule, Image, Paint, RasterFormat, RelativeTo};
-use typst_utils::hash128;
+use freepst_library::layout::{Abs, Point, Ratio, Size, Transform};
+use freepst_library::text::{Font, TextItem};
+use freepst_library::visualize::{FillRule, Image, Paint, RasterFormat, RelativeTo};
+use freepst_utils::hash128;
 
 use crate::{SVGRenderer, State, SvgMatrix, SvgPathBuilder};
 

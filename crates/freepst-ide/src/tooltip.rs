@@ -2,13 +2,13 @@ use std::fmt::Write;
 
 use ecow::{eco_format, EcoString};
 use if_chain::if_chain;
-use typst::engine::Sink;
-use typst::foundations::{repr, Capturer, CastInfo, Repr, Value};
-use typst::layout::{Length, PagedDocument};
-use typst::syntax::ast::AstNode;
-use typst::syntax::{ast, LinkedNode, Side, Source, SyntaxKind};
-use typst::utils::{round_with_precision, Numeric};
-use typst_eval::CapturesVisitor;
+use freepst::engine::Sink;
+use freepst::foundations::{repr, Capturer, CastInfo, Repr, Value};
+use freepst::layout::{Length, PagedDocument};
+use freepst::syntax::ast::AstNode;
+use freepst::syntax::{ast, LinkedNode, Side, Source, SyntaxKind};
+use freepst::utils::{round_with_precision, Numeric};
+use freepst_eval::CapturesVisitor;
 
 use crate::utils::{plain_docs_sentence, summarize_font_family};
 use crate::{analyze_expr, analyze_import, analyze_labels, IdeWorld};
@@ -276,7 +276,7 @@ fn font_tooltip(world: &dyn IdeWorld, leaf: &LinkedNode) -> Option<Tooltip> {
 mod tests {
     use std::borrow::Borrow;
 
-    use typst::syntax::Side;
+    use freepst::syntax::Side;
 
     use super::{tooltip, Tooltip};
     use crate::tests::{FilePos, TestWorld, WorldLike};
@@ -314,7 +314,7 @@ mod tests {
         let world = world.acquire();
         let world = world.borrow();
         let (source, cursor) = pos.resolve(world);
-        let doc = typst::compile(world).output.ok();
+        let doc = freepst::compile(world).output.ok();
         tooltip(world, doc.as_ref(), &source, cursor, side)
     }
 

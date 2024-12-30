@@ -4,16 +4,16 @@ use std::io::Cursor;
 use ecow::eco_format;
 use image::{DynamicImage, GenericImageView, Rgba};
 use pdf_writer::{Chunk, Filter, Finish, Ref};
-use typst_library::diag::{At, SourceResult, StrResult};
-use typst_library::visualize::{
+use freepst_library::diag::{At, SourceResult, StrResult};
+use freepst_library::visualize::{
     ColorSpace, Image, ImageKind, RasterFormat, RasterImage, SvgImage,
 };
-use typst_utils::Deferred;
+use freepst_utils::Deferred;
 
 use crate::{color, deflate, PdfChunk, WithGlobalRefs};
 
 /// Embed all used images into the PDF.
-#[typst_macros::time(name = "write images")]
+#[freepst_macros::time(name = "write images")]
 pub fn write_images(
     context: &WithGlobalRefs,
 ) -> SourceResult<(PdfChunk, HashMap<Image, Ref>)> {
@@ -165,7 +165,7 @@ pub fn deferred_image(
 /// whether the image has color.
 ///
 /// Skips the alpha channel as that's encoded separately.
-#[typst_macros::time(name = "encode raster image")]
+#[freepst_macros::time(name = "encode raster image")]
 fn encode_raster_image(image: &RasterImage) -> (Vec<u8>, Filter, bool) {
     let dynamic = image.dynamic();
     let channel_count = dynamic.color().channel_count();
@@ -190,7 +190,7 @@ fn encode_raster_image(image: &RasterImage) -> (Vec<u8>, Filter, bool) {
 }
 
 /// Encode an image's alpha channel if present.
-#[typst_macros::time(name = "encode alpha")]
+#[freepst_macros::time(name = "encode alpha")]
 fn encode_alpha(raster: &RasterImage) -> (Vec<u8>, Filter) {
     let pixels: Vec<_> = raster
         .dynamic()
@@ -201,7 +201,7 @@ fn encode_alpha(raster: &RasterImage) -> (Vec<u8>, Filter) {
 }
 
 /// Encode an SVG into a chunk of PDF objects.
-#[typst_macros::time(name = "encode svg")]
+#[freepst_macros::time(name = "encode svg")]
 fn encode_svg(
     svg: &SvgImage,
     pdfa: bool,

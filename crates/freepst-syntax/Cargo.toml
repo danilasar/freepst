@@ -11,12 +11,8 @@ keywords = { workspace = true }
 readme = { workspace = true }
 
 [dependencies]
-<<<<<<< HEAD:crates/typst-syntax/Cargo.toml
-typst-timing = { workspace = true }
-typst-utils = { workspace = true }
-=======
+freepst-timing = { workspace = true }
 freepst-utils = { workspace = true }
->>>>>>> dbf12fc8 (Взлетаем):crates/freepst-syntax/Cargo.toml
 ecow = { workspace = true }
 serde = { workspace = true }
 toml = { workspace = true }
