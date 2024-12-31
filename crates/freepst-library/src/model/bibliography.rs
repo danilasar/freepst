@@ -630,7 +630,6 @@ impl<'a> Generator<'a> {
 
     /// Drives hayagriva's citation driver.
     fn drive(&mut self) -> hayagriva::Rendered {
-        println!("1");
         static LOCALES: LazyLock<Vec<citationberg::Locale>> =
             LazyLock::new(hayagriva::archive::locales);
 
@@ -741,10 +740,8 @@ impl<'a> Generator<'a> {
         if self.bibliography.full(StyleChain::default()) {
             for entry in database.map.values() {
                 let mut locale: Option<citationberg::LocaleCode> = None;
-                println!("2{:#?}", entry);
                 if let Some(lang) = entry.language() {
                     let lang_string = lang.language.as_str();
-                    println!("2{}", lang_string);
                     if let Some(value) = hayagriva::lang::codes::get_mapping(lang_string)
                     {
                         locale = Some(value);
