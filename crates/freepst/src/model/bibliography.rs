@@ -10,6 +10,7 @@ use comemo::Tracked;
 use ecow::{eco_format, EcoString, EcoVec};
 use hayagriva::archive::ArchivedStyle;
 use hayagriva::io::BibLaTeXError;
+use hayagriva::citationberg::LocaleCode;
 use hayagriva::{
     citationberg, BibliographyDriver, BibliographyRequest, CitationItem, CitationRequest,
     SpecificLocator,
@@ -684,9 +685,18 @@ impl<'a> Generator<'a> {
                     Some(CitationForm::Year) => Some(hayagriva::CitePurpose::Year),
                 };
 
+                let mut locale: Option<citationberg::LocaleCode> = None;
+                if let Some(lang) = entry.language() {
+                    let lang_string = lang.language.as_str();
+                    if let Some(value) = hayagriva::lang::codes::get_mapping(lang_string)
+                    {
+                        locale = Some(LocaleCode(String::from(value)));
+                    }
+                }
+
                 normal &= special_form.is_none();
                 subinfos.push(CiteInfo { key, supplement, hidden });
-                items.push(CitationItem::new(entry, locator, None, hidden, special_form));
+                items.push(CitationItem::new(entry, locator, locale, hidden, special_form));
             }
 
             if !errors.is_empty() {
@@ -728,10 +738,18 @@ impl<'a> Generator<'a> {
         // bibliography.
         if self.bibliography.full(StyleChain::default()) {
             for entry in database.map.values() {
+                let mut locale: Option<citationberg::LocaleCode> = None;
+                if let Some(lang) = entry.language() {
+                    let lang_string = lang.language.as_str();
+                    if let Some(value) = hayagriva::lang::codes::get_mapping(lang_string)
+                    {
+                        locale = Some(LocaleCode(String::from(value)));
+                    }
+                }
                 driver.citation(CitationRequest::new(
-                    vec![CitationItem::new(entry, None, None, true, None)],
+                    vec![CitationItem::new(entry, None, locale, true, None)],
                     bibliography_style.get(),
-                    Some(locale.clone()),
+                    None,
                     &LOCALES,
                     None,
                 ));
