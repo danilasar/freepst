@@ -1,6 +1,5 @@
 //! Structuring elements that define the document model.
 
-mod strong;
 mod table;
 mod terms;
 
@@ -38,5 +37,4 @@ pub fn define(global: &mut Scope) {
     global.category(MODEL);
     global.define_elem::<TableElem>();
     global.define_elem::<TermsElem>();
-    global.define_elem::<StrongElem>();
 }
