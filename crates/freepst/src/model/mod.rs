@@ -1,7 +1,5 @@
 //! Structuring elements that define the document model.
 
-#[path = "numbering.rs"]
-mod numbering_;
 mod outline;
 mod par;
 mod quote;
@@ -50,5 +48,4 @@ pub fn define(global: &mut Scope) {
     global.define_elem::<TableElem>();
     global.define_elem::<TermsElem>();
     global.define_elem::<StrongElem>();
-    global.define_func::<numbering>();
 }
