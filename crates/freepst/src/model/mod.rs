@@ -1,6 +1,5 @@
 //! Structuring elements that define the document model.
 
-mod reference;
 mod strong;
 mod table;
 mod terms;
@@ -37,7 +36,6 @@ pub static MODEL: Category;
 /// Hook up all `model` definitions.
 pub fn define(global: &mut Scope) {
     global.category(MODEL);
-    global.define_elem::<RefElem>();
     global.define_elem::<TableElem>();
     global.define_elem::<TermsElem>();
     global.define_elem::<StrongElem>();
