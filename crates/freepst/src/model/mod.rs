@@ -1,11 +1,5 @@
 //! Structuring elements that define the document model.
 
-mod bibliography;
-mod cite;
-mod document;
-mod emph;
-#[path = "enum.rs"]
-mod enum_;
 mod figure;
 mod footnote;
 mod heading;
@@ -53,7 +47,6 @@ pub static MODEL: Category;
 /// Hook up all `model` definitions.
 pub fn define(global: &mut Scope) {
     global.category(MODEL);
-    global.define_elem::<DocumentElem>();
     global.define_elem::<RefElem>();
     global.define_elem::<LinkElem>();
     global.define_elem::<OutlineElem>();
@@ -61,15 +54,11 @@ pub fn define(global: &mut Scope) {
     global.define_elem::<FigureElem>();
     global.define_elem::<FootnoteElem>();
     global.define_elem::<QuoteElem>();
-    global.define_elem::<CiteElem>();
-    global.define_elem::<BibliographyElem>();
-    global.define_elem::<EnumElem>();
     global.define_elem::<ListElem>();
     global.define_elem::<ParbreakElem>();
     global.define_elem::<ParElem>();
     global.define_elem::<TableElem>();
     global.define_elem::<TermsElem>();
-    global.define_elem::<EmphElem>();
     global.define_elem::<StrongElem>();
     global.define_func::<numbering>();
 }
