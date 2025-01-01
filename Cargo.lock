@@ -814,7 +814,7 @@ dependencies = [
 
 [[package]]
 name = "freepst"
-version = "0.12.0"
+version = "0.12.0-1"
 dependencies = [
  "comemo",
  "ecow",
@@ -831,7 +831,7 @@ dependencies = [
 
 [[package]]
 name = "freepst-cli"
-version = "0.12.0"
+version = "0.12.0-1"
 dependencies = [
  "chrono",
  "clap",
@@ -876,7 +876,7 @@ dependencies = [
 
 [[package]]
 name = "freepst-docs"
-version = "0.12.0"
+version = "0.12.0-1"
 dependencies = [
  "clap",
  "ecow",
@@ -897,7 +897,7 @@ dependencies = [
 
 [[package]]
 name = "freepst-eval"
-version = "0.12.0"
+version = "0.12.0-1"
 dependencies = [
  "comemo",
  "ecow",
@@ -915,7 +915,7 @@ dependencies = [
 
 [[package]]
 name = "freepst-fuzz"
-version = "0.12.0"
+version = "0.12.0-1"
 dependencies = [
  "comemo",
  "freepst",
@@ -927,7 +927,7 @@ dependencies = [
 
 [[package]]
 name = "freepst-html"
-version = "0.12.0"
+version = "0.12.0-1"
 dependencies = [
  "comemo",
  "ecow",
@@ -941,7 +941,7 @@ dependencies = [
 
 [[package]]
 name = "freepst-ide"
-version = "0.12.0"
+version = "0.12.0-1"
 dependencies = [
  "comemo",
  "ecow",
@@ -958,7 +958,7 @@ dependencies = [
 
 [[package]]
 name = "freepst-kit"
-version = "0.12.0"
+version = "0.12.0-1"
 dependencies = [
  "dirs",
  "ecow",
@@ -979,7 +979,7 @@ dependencies = [
 
 [[package]]
 name = "freepst-layout"
-version = "0.12.0"
+version = "0.12.0-1"
 dependencies = [
  "az",
  "bumpalo",
@@ -1009,7 +1009,7 @@ dependencies = [
 
 [[package]]
 name = "freepst-library"
-version = "0.12.0"
+version = "0.12.0-1"
 dependencies = [
  "az",
  "bitflags 2.6.0",
@@ -1068,7 +1068,7 @@ dependencies = [
 
 [[package]]
 name = "freepst-macros"
-version = "0.12.0"
+version = "0.12.0-1"
 dependencies = [
  "heck",
  "proc-macro2",
@@ -1078,7 +1078,7 @@ dependencies = [
 
 [[package]]
 name = "freepst-pdf"
-version = "0.12.0"
+version = "0.12.0-1"
 dependencies = [
  "arrayvec",
  "base64",
@@ -1104,7 +1104,7 @@ dependencies = [
 
 [[package]]
 name = "freepst-realize"
-version = "0.12.0"
+version = "0.12.0-1"
 dependencies = [
  "arrayvec",
  "bumpalo",
@@ -1120,7 +1120,7 @@ dependencies = [
 
 [[package]]
 name = "freepst-render"
-version = "0.12.0"
+version = "0.12.0-1"
 dependencies = [
  "bytemuck",
  "comemo",
@@ -1136,7 +1136,7 @@ dependencies = [
 
 [[package]]
 name = "freepst-svg"
-version = "0.12.0"
+version = "0.12.0-1"
 dependencies = [
  "base64",
  "comemo",
@@ -1153,7 +1153,7 @@ dependencies = [
 
 [[package]]
 name = "freepst-syntax"
-version = "0.12.0"
+version = "0.12.0-1"
 dependencies = [
  "ecow",
  "freepst-timing",
@@ -1169,7 +1169,7 @@ dependencies = [
 
 [[package]]
 name = "freepst-tests"
-version = "0.12.0"
+version = "0.12.0-1"
 dependencies = [
  "clap",
  "comemo",
@@ -1194,7 +1194,7 @@ dependencies = [
 
 [[package]]
 name = "freepst-timing"
-version = "0.12.0"
+version = "0.12.0-1"
 dependencies = [
  "parking_lot",
  "serde",
@@ -1203,7 +1203,7 @@ dependencies = [
 
 [[package]]
 name = "freepst-utils"
-version = "0.12.0"
+version = "0.12.0-1"
 dependencies = [
  "once_cell",
  "portable-atomic",
@@ -1296,8 +1296,8 @@ checksum = "bf151400ff0baff5465007dd2f3e717f3fe502074ca563069ce3a6629d07b289"
 
 [[package]]
 name = "hayagriva"
-version = "0.8.0"
-source = "git+https://github.com/danilasar/hayagriva.git?rev=9594591#9594591acf6fbb218eb6c3e82a78cb11d6533006"
+version = "0.8.0-1"
+source = "git+https://github.com/danilasar/hayagriva.git#1c73b8d20d22828ea0374b0d8a2f49797f52297a"
 dependencies = [
  "biblatex",
  "ciborium",

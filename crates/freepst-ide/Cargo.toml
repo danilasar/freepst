@@ -5,6 +5,7 @@ version = { workspace = true }
 rust-version = { workspace = true }
 edition = { workspace = true }
 repository = { workspace = true }
+license = { workspace = true }
 categories = { workspace = true }
 keywords = { workspace = true }
 readme = { workspace = true }

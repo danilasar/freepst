@@ -10,7 +10,6 @@ use comemo::Tracked;
 use ecow::{eco_format, EcoString, EcoVec};
 use hayagriva::archive::ArchivedStyle;
 use hayagriva::io::BibLaTeXError;
-use hayagriva::citationberg::LocaleCode;
 use hayagriva::{
     citationberg, BibliographyDriver, BibliographyRequest, CitationItem, CitationRequest,
     SpecificLocator,
