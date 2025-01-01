@@ -1,6 +1,5 @@
 //! Structuring elements that define the document model.
 
-mod footnote;
 mod heading;
 mod link;
 mod list;
@@ -50,7 +49,6 @@ pub fn define(global: &mut Scope) {
     global.define_elem::<LinkElem>();
     global.define_elem::<OutlineElem>();
     global.define_elem::<HeadingElem>();
-    global.define_elem::<FootnoteElem>();
     global.define_elem::<QuoteElem>();
     global.define_elem::<ListElem>();
     global.define_elem::<ParbreakElem>();
