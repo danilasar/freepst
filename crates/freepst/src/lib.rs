@@ -1,4 +1,4 @@
-//! The compiler for the _Typst_ markup language.
+//! The compiler for the _freepst_ markup language.
 //!
 //! # Steps
 //! - **Parsing:**
@@ -118,7 +118,7 @@ fn compile_impl<D: Document>(
         Route::default().track(),
         &main,
     )?
-    .content();
+        .content();
 
     let mut iter = 0;
     let mut subsink;
