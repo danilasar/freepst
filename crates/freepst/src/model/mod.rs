@@ -1,6 +1,5 @@
 //! Structuring elements that define the document model.
 
-mod outline;
 mod par;
 mod quote;
 mod reference;
@@ -41,7 +40,6 @@ pub static MODEL: Category;
 pub fn define(global: &mut Scope) {
     global.category(MODEL);
     global.define_elem::<RefElem>();
-    global.define_elem::<OutlineElem>();
     global.define_elem::<QuoteElem>();
     global.define_elem::<ParbreakElem>();
     global.define_elem::<ParElem>();
