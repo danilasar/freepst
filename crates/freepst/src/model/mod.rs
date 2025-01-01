@@ -1,6 +1,5 @@
 //! Structuring elements that define the document model.
 
-mod par;
 mod quote;
 mod reference;
 mod strong;
@@ -41,8 +40,6 @@ pub fn define(global: &mut Scope) {
     global.category(MODEL);
     global.define_elem::<RefElem>();
     global.define_elem::<QuoteElem>();
-    global.define_elem::<ParbreakElem>();
-    global.define_elem::<ParElem>();
     global.define_elem::<TableElem>();
     global.define_elem::<TermsElem>();
     global.define_elem::<StrongElem>();
