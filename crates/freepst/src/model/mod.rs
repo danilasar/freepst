@@ -1,6 +1,5 @@
 //! Structuring elements that define the document model.
 
-mod terms;
 
 pub use self::bibliography::*;
 pub use self::cite::*;
@@ -34,5 +33,4 @@ pub static MODEL: Category;
 /// Hook up all `model` definitions.
 pub fn define(global: &mut Scope) {
     global.category(MODEL);
-    global.define_elem::<TermsElem>();
 }
